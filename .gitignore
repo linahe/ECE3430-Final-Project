@@ -7,4 +7,4 @@
 *.map
 *.xml
 /Debug
-
+/.launches
