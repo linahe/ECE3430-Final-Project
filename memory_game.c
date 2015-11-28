@@ -36,7 +36,22 @@ void winGame()
 
 void loseGame()
 {
-
+	LightLED(0x80);
+	__delay_cycles(500000);
+	LightLED(0xC0);
+	__delay_cycles(500000);
+	LightLED(0xE0);
+	__delay_cycles(500000);
+	LightLED(0xF0);
+	__delay_cycles(500000);
+	LightLED(0xF8);
+	__delay_cycles(500000);
+	LightLED(0xFC);
+	__delay_cycles(500000);
+	LightLED(0xFE);
+	__delay_cycles(500000);
+	LightLED(0xFF);
+	__delay_cycles(500000);
 }
 
 void continueGame()
