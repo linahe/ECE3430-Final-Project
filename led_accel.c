@@ -239,14 +239,14 @@ void LightLEDsByDirection(LEDStruct * myLEDStruct) {
 
 void BlinkLEDs(LEDStruct *myLEDStruct)
 {
-	SetAllLEDs(myLEDStruct, TIMER0PD);
+	//SetAllLEDs(myLEDStruct, TIMER0PD);
 
-	myLEDStruct->LEDStatus = 0xFF;		//Blink LEDs twice
+	LightLED(0xFF);		//Blink LEDs twice
 	__delay_cycles(500000);
-	myLEDStruct->LEDStatus = 0x00;
+	LightLED(0x00);
 	__delay_cycles(500000);
-	myLEDStruct->LEDStatus = 0xFF;
+	LightLED(0xFF);
 	__delay_cycles(500000);
-	myLEDStruct->LEDStatus = 0x00;
+	LightLED(0x00);
 	__delay_cycles(500000);
 }
