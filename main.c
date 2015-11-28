@@ -36,6 +36,7 @@ int main(void) {
 
 	//after calibration finished, need user to press button to indicate they are ready to begin game
 	BlinkLEDs(&LEDControl);
+
 	//METHOD HERE TO WAIT FOR BUTTON PRESS TO START GAME
 	startGame();
 

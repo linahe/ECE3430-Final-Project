@@ -10,6 +10,7 @@
 #include "led_accel.h"
 #include "debounce.h"
 #include "cordic.h"
+#include "memory_game.h"
 
 
 #ifndef ROTARY_ENCODER_DLB3UN_INIT_H_
