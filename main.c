@@ -1,0 +1,105 @@
+#include <msp430.h> 
+#include "init.h"
+
+/*
+ * main.c
+ *
+ * Authors: Deanna Buttaro dlb3un, Lina He lh3su, David Zekoski djz5qj
+ *
+ * This program works as an electronic level using an ADC to take readings of how the board is positioned.
+ * The board must be calibrated by indicating the x,y,z max and mins, then the LEDs that are in the direction
+ * of the tilt will light up in varying brightness depending on the severity of tilt.
+ */
+
+#define TOLERANCE 5 //how many degrees of tolerance for the board to be considered level
+
+LEDStruct LEDControl; //overall info stored about which leds to light and what brightness, etc
+unsigned char CurrentLEDCodeValue; //as interrupts progress, only light LEDs whose duty cycles have not been reached yet
+int i;
+CalibrationState myCalibrationState; //used at beginning to calibrate board
+int X0, Y0, Z0, XAvg, YAvg, ZAvg; //used as externs in led_accel.c to calculate 0s
+calculations calc;
+
+volatile int theta, phi; //for debugging
+int main(void) {
+
+	InitializeHardware(&LEDControl); //set up ports, timers, interrupts
+	ConfigureADC(); //get ADC set up to start reading values
+
+	BlinkLEDs(&LEDControl);
+
+	myCalibrationState = XMaxState; //change to init later?
+	StartCalibration(myCalibrationState, &gPushButton, &LEDControl);
+
+	LightLED(LEDControl.LEDStatus);
+
+    while(1) {
+
+    	//take cordic angle input
+    	//put x-x0, y-y0, and z-z0 in calcs
+    	//get theta and phi
+    	//use those to change brightness of leds
+    	calc.x = XAvg - X0;
+    	calc.y = YAvg - Y0;
+    	calc.z = ZAvg - Z0;
+    	calculateArcHypZ(&calc);
+    	theta = (long) calc.angleTheta >> 8;	//divide by 256 to see angles 0-360
+    	phi = (long) calc.anglePhi >> 8;
+
+    	if(phi > 90) {
+    		phi = 360 - phi;
+    	}
+
+
+    	if (phi >= 90-TOLERANCE) { //2 degrees a little too sensitive
+    		LEDControl.LEDDir = Flat;
+    		LEDControl.State = Duty10;
+    	} else {
+    		LEDControl.LEDDir = DetermineDirection(theta);
+    		LEDControl.State = DetermineStateFromPhi(phi);
+    	}
+    	SetAllLEDs(&LEDControl, OFF);
+    	LightLEDsByDirection(&LEDControl);
+    }
+
+	return 0;
+}
+
+
+#pragma vector = TIMER0_A1_VECTOR			// Timer 1 interrupt service routine
+	__interrupt void TimerA1_routine(void) {
+		switch(__even_in_range(TAIV, 10)) {
+			case 2: //capture control flag - turn off LED (CCIFG1)
+				//CCIFG1 = 10 in binary. transfer triggered when this flag set
+
+				CurrentLEDCodeValue = LEDControl.LEDStatus;
+				for(i = 0; i < NUMLEDS; i++) {
+					if((LEDControl.PulseWidth)[i] <= LEDControl.LEDTimer) {
+						CurrentLEDCodeValue &= ~(1<<i);
+					}
+				}
+				LightLED(CurrentLEDCodeValue);
+				break;
+		}
+
+	LEDControl.LEDTimer += CONTROLPD;
+	TA0CCTL1 &= ~CCIFG; //clear capture control interrupt flag
+}
+
+#pragma vector = TIMER0_A0_VECTOR  				// Timer 0 interrupt service routine
+__interrupt void TimerA0_routine(void) {
+
+	//debounce
+	g1mSTimer++;  //increment the Timer, every time the interrupt occurs, to use for debouncing
+
+	//adc_accel
+	ReadADC();
+	Filter(); //store latest adc value read in a buffer
+
+	LightLED(LEDControl.LEDStatus);//turn on LEDs
+	//reset LEDTimer to 0
+	if(LEDControl.LEDTimer >= TIMER0PD) {
+		LEDControl.LEDTimer = 0;
+	}
+
+}
