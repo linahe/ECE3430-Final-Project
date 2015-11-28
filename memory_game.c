@@ -1,6 +1,8 @@
 #include "memory_game.h"
 
 
+const Direction testPattern[PATTERN_LENGTH] = {North, South, East, West, North, South, East, West, North, South};
+
 void startGame()
 {
 
