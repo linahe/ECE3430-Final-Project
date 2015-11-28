@@ -38,11 +38,6 @@ typedef enum
 
 } CalibrationState;
 
-
-typedef enum {
-	Duty0, Duty10, Duty25, Duty50, Duty100
-} LEDState;
-
 typedef enum {
 	Flat, North, Northwest, West, Southwest, South, Southeast, East, Northeast
 } Direction;
@@ -51,7 +46,6 @@ typedef struct {
 	unsigned char LEDStatus; //which LEDs to light, 2 byte unsigned char
 	unsigned int Period; //the smallest interval LED brightness can be
 	unsigned int PulseWidth[8]; //duty cycles for each individual LED
-	LEDState State; //how bright to be, the LED duty cycle
 	Direction LEDDir; //direction the tilt is in (N S E W etc)
 	unsigned int LEDTimer; //used with interrupts to determine when to turn off certain LEDs to do PWM
 } LEDStruct;
@@ -73,10 +67,6 @@ void BlinkLEDs(LEDStruct *myLEDStruct);
 
 Direction DetermineDirection(long theta);
 void LightLEDsByDirection(LEDStruct * myLEDStruct);
-int DetermineBrightness(LEDState state);
-LEDState DetermineStateFromPhi(long phi);
-LEDState DetermineNextLowestLEDState(LEDState state);
-void SetAdjacentLEDWidthsAtLowerBrightness(LEDStruct * myLEDStruct, int idx);
 
 
 

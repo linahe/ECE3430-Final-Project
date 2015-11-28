@@ -11,7 +11,6 @@
 
 int XMax, XMin, YMax, YMin, ZMax, ZMin;
 extern int X0, Y0, Z0, XAvg, YAvg, ZAvg;
-int TripleLightCodes[NUMLEDS] = {0x83, 0x07, 0x0E, 0x1C, 0x38, 0x70, 0xE0, 0xC1};
 
 
 void StartCalibration(CalibrationState myCalibrationState, SwitchDefine * mySwitch, LEDStruct * myLEDStruct)
@@ -144,8 +143,8 @@ void IndicateLED(CalibrationState myCalibrationState, LEDStruct * myLEDStruct) {
             	myLEDStruct->LEDStatus = 0xFF;
 				break;
             case ZMinState:
-            	SetAllLEDs(myLEDStruct, CONTROLPD);
-            	myLEDStruct->LEDStatus = 0xFF;
+            	LightLED(0xAA);
+            	myLEDStruct->LEDStatus = 0xAA;
 				break;
             case CalibrationDone:
 				break;
@@ -194,53 +193,31 @@ Direction DetermineDirection(long theta) {
 //Based off of what direction the board is tilted, light the LEDs in those directions
 void LightLEDsByDirection(LEDStruct * myLEDStruct) {
 
-	int Brightness = DetermineBrightness(myLEDStruct->State);
+	int Brightness = TIMER0PD; //all 1 brightness now //DetermineBrightness(myLEDStruct->State);
     switch(myLEDStruct->LEDDir)
     {
             case West:
-            	SetAllLEDs(myLEDStruct, OFF); //LED3
+            	//SetAllLEDs(myLEDStruct, OFF); //LED3
 				myLEDStruct->PulseWidth[XMAXLED] = Brightness;
-				SetAdjacentLEDWidthsAtLowerBrightness(myLEDStruct, XMAXLED);
-				myLEDStruct->LEDStatus = TripleLightCodes[3]; //done
+				myLEDStruct->LEDStatus = BIT3; //done
 				break;
-            case Northwest: //LED2
-            	//THIS ONE IS FUNKY
-            	SetAllLEDs(myLEDStruct, OFF);
-            	myLEDStruct->PulseWidth[2] = Brightness;
-            	myLEDStruct->LEDStatus = TripleLightCodes[2]; //done
-            	break;
             case North: //LED1
-            	SetAllLEDs(myLEDStruct, OFF);
+            	//SetAllLEDs(myLEDStruct, OFF);
             	myLEDStruct->PulseWidth[YMINLED] = Brightness;
-            	myLEDStruct->LEDStatus = TripleLightCodes[1]; //done
-				break;
-            case Northeast: //LED0
-            	SetAllLEDs(myLEDStruct, OFF);
-            	myLEDStruct->PulseWidth[0] = Brightness;
-            	myLEDStruct->LEDStatus = TripleLightCodes[0]; //done
+            	myLEDStruct->LEDStatus = BIT1; //done
 				break;
             case East: //LED8 (top LED)
-            	SetAllLEDs(myLEDStruct, OFF);
+            	//SetAllLEDs(myLEDStruct, OFF);
             	myLEDStruct->PulseWidth[XMINLED] = Brightness;
-            	myLEDStruct->LEDStatus = TripleLightCodes[7]; //done
-                break;
-            case Southeast:
-            	SetAllLEDs(myLEDStruct, OFF);
-            	myLEDStruct->PulseWidth[6] = Brightness;
-            	myLEDStruct->LEDStatus = TripleLightCodes[6]; //done
+            	myLEDStruct->LEDStatus = BIT7; //done
                 break;
             case South:
-            	SetAllLEDs(myLEDStruct, OFF);
+            	//SetAllLEDs(myLEDStruct, OFF);
             	myLEDStruct->PulseWidth[YMAXLED] = Brightness;
-            	myLEDStruct->LEDStatus = TripleLightCodes[5]; //done
+            	myLEDStruct->LEDStatus = BIT5; //done
 				break;
-            case Southwest:
-            	SetAllLEDs(myLEDStruct, OFF);
-            	myLEDStruct->PulseWidth[4] = Brightness;
-            	myLEDStruct->LEDStatus = TripleLightCodes[4]; //done
-                break;
             case Flat:
-            	SetAllLEDs(myLEDStruct, Brightness);
+            	//SetAllLEDs(myLEDStruct, Brightness);
             	myLEDStruct->LEDStatus = 0xFF;
                 break;
 
@@ -249,75 +226,6 @@ void LightLEDsByDirection(LEDStruct * myLEDStruct) {
 }
 
 
-//given a specific duty cycle, determine how many clock cycles this equates to, to get a brightness value
-int DetermineBrightness(LEDState state) {
-
-    switch(state)
-    {
-            case Duty0:
-            	return 0;
-            case Duty10:
-            	return CONTROLPD;
-            case Duty25:
-            	return TIMER0PD >> 2; //a fourth of max duty cycle
-            case Duty50:
-            	return TIMER0PD >> 1; //half of max cycle
-            case Duty100:
-            	return TIMER0PD;
-    }
-    return 0; //not reached
-}
-
-
-//return how bright LEDs should be based off of tilt (more tilt = brighter)
-LEDState DetermineStateFromPhi(long phi) {
-	if (phi < 50) {
-		return Duty100;
-	} else if (phi < 65) {
-		return Duty50;
-	} else if (phi < 75) {
-		return Duty25;
-	} else {
-		return Duty10;
-	}
-
-}
-
-//LEDs adjacent to LED in direction of tilt should light up at one lower brightness level
-LEDState DetermineNextLowestLEDState(LEDState state) {
-    switch(state)
-    {
-            case Duty0:
-            	return Duty0;
-            case Duty10:
-            	return Duty0;
-            case Duty25:
-            	return Duty10;
-            case Duty50:
-            	return Duty25;
-            case Duty100:
-            	return Duty50;
-    }
-    return Duty0; //not reached
-
-}
-
-//find the adjacent LEDs given the index of the current led
-void SetAdjacentLEDWidthsAtLowerBrightness(LEDStruct * myLEDStruct, int idx) {
-	LEDState state = DetermineNextLowestLEDState(myLEDStruct->State);
-	int Brightness = DetermineBrightness(state);
-
-	int belowIdx = idx-1;
-	if(belowIdx < 0)
-		belowIdx = NUMLEDS-1;
-	int aboveIdx = idx+1;
-	if(aboveIdx > (NUMLEDS-1))
-		aboveIdx = 0;
-
-	myLEDStruct->PulseWidth[idx-1] = Brightness;
-	myLEDStruct->PulseWidth[idx+1] = Brightness;
-
-}
 
 void BlinkLEDs(LEDStruct *myLEDStruct)
 {

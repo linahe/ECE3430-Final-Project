@@ -35,7 +35,6 @@ int main(void) {
 
 	LightLED(LEDControl.LEDStatus);
 
-
 	//after calibration finished, need user to press button to indicate they are ready to begin game
 	BlinkLEDs(&LEDControl);
 
@@ -64,12 +63,11 @@ int main(void) {
 
     	if (phi >= 90-TOLERANCE) { //2 degrees a little too sensitive
     		LEDControl.LEDDir = Flat;
-    		LEDControl.State = Duty10;
     	} else {
     		LEDControl.LEDDir = DetermineDirection(theta);
-    		LEDControl.State = DetermineStateFromPhi(phi);
     	}
     	SetAllLEDs(&LEDControl, OFF);
+    	SetAllLEDs(&LEDControl, TIMER0PD);
     	LightLEDsByDirection(&LEDControl);
     }
 
