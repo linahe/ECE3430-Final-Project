@@ -11,7 +11,7 @@
  * of the tilt will light up in varying brightness depending on the severity of tilt.
  */
 
-#define TOLERANCE 5 //how many degrees of tolerance for the board to be considered level
+#define TOLERANCE 15 //how many degrees of tolerance for the board to be considered level
 
 LEDStruct LEDControl; //overall info stored about which leds to light and what brightness, etc
 unsigned char CurrentLEDCodeValue; //as interrupts progress, only light LEDs whose duty cycles have not been reached yet
@@ -32,6 +32,11 @@ int main(void) {
 	StartCalibration(myCalibrationState, &gPushButton, &LEDControl);
 
 	LightLED(LEDControl.LEDStatus);
+
+
+	//after calibration finished, need user to press button to indicate they are ready to begin game
+	BlinkLEDs(&LEDControl);
+	//METHOD HERE TO WAIT FOR BUTTON PRESS TO START GAME
 
     while(1) {
 

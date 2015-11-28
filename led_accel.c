@@ -177,23 +177,15 @@ void Send8Bits(unsigned char data) { //send 8 bit value to GPIO
 }
 
 Direction DetermineDirection(long theta) {
-	if(theta >= 23 && theta <= 67) {
-		return Northeast;
-	} else if (theta >= 68  && theta <= 112) {
+	if (theta >= 45  && theta <= 134) {
 		return North;
-	} else if (theta >= 113  && theta <= 158) {
-		return Northwest;
-	} else if (theta >= 159  && theta <= 203) {
+	} else if (theta >= 135  && theta <= 224) {
 		return West;
-	} else if (theta >= 204  && theta <= 247) {
-		return Southwest;
-	} else if (theta >= 248  && theta <= 292) {
+	} else if (theta >= 225  && theta <= 314) {
 		return South;
-	} else if (theta >= 293  && theta <= 338) {
-		return Southeast;
-	} else if (theta >= 338  && theta <= 360) {
+	} else if (theta >= 315  && theta <= 360) {
 		return East;
-	} else { //btw 0 and 22 degrees inclusive
+	} else { //btw 0 and 44 degrees inclusive
 		return East;
 	}
 
