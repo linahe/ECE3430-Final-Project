@@ -5,7 +5,9 @@ const Direction testPattern[PATTERN_LENGTH] = {North, South, East, West, North, 
 
 void startGame()
 {
-
+	WaitLowButton(&gPushButton);
+	WaitHighButton(&gPushButton);
+	//Change the gameState of Game struct to DisplayPattern
 }
 
 void displayPattern()
