@@ -24,6 +24,7 @@ void checkInput()
 void winGame()
 {
 
+	LightLED(0x5D); //smiley face
 }
 
 void loseGame()
