@@ -202,28 +202,33 @@ void LightLEDsByDirection(LEDStruct * myLEDStruct) {
     switch(myLEDStruct->LEDDir)
     {
             case West:
+            	LightLED(BIT3);
             	//SetAllLEDs(myLEDStruct, OFF); //LED3
-				myLEDStruct->PulseWidth[XMAXLED] = Brightness;
-				myLEDStruct->LEDStatus = BIT3; //done
+				//myLEDStruct->PulseWidth[XMAXLED] = Brightness;
+				//myLEDStruct->LEDStatus = BIT3; //done
 				break;
             case North: //LED1
+            	LightLED(BIT1);
             	//SetAllLEDs(myLEDStruct, OFF);
-            	myLEDStruct->PulseWidth[YMINLED] = Brightness;
-            	myLEDStruct->LEDStatus = BIT1; //done
+            	//myLEDStruct->PulseWidth[YMINLED] = Brightness;
+            	//myLEDStruct->LEDStatus = BIT1; //done
 				break;
             case East: //LED8 (top LED)
+            	LightLED(BIT7);
             	//SetAllLEDs(myLEDStruct, OFF);
-            	myLEDStruct->PulseWidth[XMINLED] = Brightness;
-            	myLEDStruct->LEDStatus = BIT7; //done
+            	//myLEDStruct->PulseWidth[XMINLED] = Brightness;
+            	//myLEDStruct->LEDStatus = BIT7; //done
                 break;
             case South:
+            	LightLED(BIT5);
             	//SetAllLEDs(myLEDStruct, OFF);
-            	myLEDStruct->PulseWidth[YMAXLED] = Brightness;
-            	myLEDStruct->LEDStatus = BIT5; //done
+            	//myLEDStruct->PulseWidth[YMAXLED] = Brightness;
+            	//myLEDStruct->LEDStatus = BIT5; //done
 				break;
             case Flat:
+            	LightLED(0xFF);
             	//SetAllLEDs(myLEDStruct, Brightness);
-            	myLEDStruct->LEDStatus = 0xFF;
+            	//myLEDStruct->LEDStatus = 0xFF;
                 break;
 
 
