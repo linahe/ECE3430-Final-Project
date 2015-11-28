@@ -6,7 +6,6 @@
 
 #define PATTERN_LENGTH 10
 
-
 typedef enum {
 	StartGame, DisplayPattern, UserInput, CheckInput, WinGame, LoseGame
 } GameState;
@@ -19,7 +18,7 @@ typedef struct {
 
 } Game;
 
-void startGame(Game * Game);
+void startGame();
 
 void displayPattern();
 

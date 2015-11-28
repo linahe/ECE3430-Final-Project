@@ -40,7 +40,7 @@ int main(void) {
 	BlinkLEDs(&LEDControl);
 
 	//METHOD HERE TO WAIT FOR BUTTON PRESS TO START GAME
-	startGame(&GameObj);
+	startGame();
 
 
 

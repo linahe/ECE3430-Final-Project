@@ -1,16 +1,16 @@
 #include "memory_game.h"
 
-
+extern Game GameObj;
 Direction testPattern[PATTERN_LENGTH] = {North, South, East, West, North, South, East, West, North, South};
 
-void startGame(Game * Game)
+void startGame()
 {
 	WaitLowButton(&gPushButton);
 	WaitHighButton(&gPushButton);
 	//Change the gameState of Game struct to DisplayPattern
 	int i;
 	for(i = 0; i < PATTERN_LENGTH; i++) {
-		Game->pattern[i] = testPattern[i];
+		GameObj.pattern[i] = testPattern[i];
 	}
 }
 
@@ -31,7 +31,6 @@ void checkInput()
 
 void winGame()
 {
-
 	LightLED(0x5D); //smiley face
 }
 
