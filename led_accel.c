@@ -119,32 +119,37 @@ void IndicateLED(CalibrationState myCalibrationState, LEDStruct * myLEDStruct) {
     switch(myCalibrationState)
     {
             case XMaxState:
-            	SetAllLEDs(myLEDStruct, OFF);
-				myLEDStruct->PulseWidth[XMAXLED] = TIMER0PD;
-				myLEDStruct->LEDStatus = 0x08;
+            	LightLED(BIT3);
+            	//SetAllLEDs(myLEDStruct, OFF);
+				//myLEDStruct->PulseWidth[XMAXLED] = TIMER0PD;
+				//myLEDStruct->LEDStatus = 0x08;
 				break;
             case XMinState:
-            	SetAllLEDs(myLEDStruct, OFF);
-            	myLEDStruct->PulseWidth[XMINLED] = TIMER0PD;
-            	myLEDStruct->LEDStatus = 0x80;
+            	LightLED(BIT7);
+            	//SetAllLEDs(myLEDStruct, OFF);
+            	//myLEDStruct->PulseWidth[XMINLED] = TIMER0PD;
+            	//myLEDStruct->LEDStatus = 0x80;
                 break;
             case YMaxState:
-            	SetAllLEDs(myLEDStruct, OFF);
-            	myLEDStruct->PulseWidth[YMAXLED] = TIMER0PD;
-            	myLEDStruct->LEDStatus = 0x20;
+            	LightLED(BIT5);
+            	//SetAllLEDs(myLEDStruct, OFF);
+            	//myLEDStruct->PulseWidth[YMAXLED] = TIMER0PD;
+            	//myLEDStruct->LEDStatus = 0x20;
 				break;
             case YMinState:
-            	SetAllLEDs(myLEDStruct, OFF);
-            	myLEDStruct->PulseWidth[YMINLED] = TIMER0PD;
-            	myLEDStruct->LEDStatus = 0x02;
+            	LightLED(BIT1);
+            	//SetAllLEDs(myLEDStruct, OFF);
+            	//myLEDStruct->PulseWidth[YMINLED] = TIMER0PD;
+            	//myLEDStruct->LEDStatus = 0x02;
 				break;
             case ZMaxState:
-            	SetAllLEDs(myLEDStruct, TIMER0PD);
-            	myLEDStruct->LEDStatus = 0xFF;
+            	LightLED(0xFF);
+            	//SetAllLEDs(myLEDStruct, TIMER0PD);
+            	//myLEDStruct->LEDStatus = 0xFF;
 				break;
             case ZMinState:
             	LightLED(0xAA);
-            	myLEDStruct->LEDStatus = 0xAA;
+            	//myLEDStruct->LEDStatus = 0xAA;
 				break;
             case CalibrationDone:
 				break;
