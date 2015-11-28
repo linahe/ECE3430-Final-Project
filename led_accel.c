@@ -2,7 +2,7 @@
  * led_accel.c
  *
  *  Created on: Oct 27, 2015
- *      Author: // Deanna Buttaro dlb3un, Lina He lh3su, David Zekoski djz5qj
+ *      Author: // Deanna Buttaro dlb3un, Lina He lh3su
  */
 #include <msp430.h>
 #include "led_accel.h"

@@ -4,7 +4,7 @@
 /*
  * main.c
  *
- * Authors: Deanna Buttaro dlb3un, Lina He lh3su, David Zekoski djz5qj
+ * Authors: Deanna Buttaro dlb3un, Lina He lh3su
  *
  * This program works as an electronic level using an ADC to take readings of how the board is positioned.
  * The board must be calibrated by indicating the x,y,z max and mins, then the LEDs that are in the direction

@@ -2,7 +2,7 @@
  * init.c
  *
  *  Created on: Oct 13, 2015
- *      Author: // Deanna Buttaro dlb3un, Lina He lh3su, David Zekoski djz5qj
+ *      Author: // Deanna Buttaro dlb3un, Lina He lh3su
  */
 #include "init.h"
 #include <msp430.h>

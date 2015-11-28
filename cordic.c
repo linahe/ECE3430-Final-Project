@@ -1,5 +1,5 @@
 /*
- * // Deanna Buttaro dlb3un, Lina He lh3su, David Zekoski djz5qj
+ * // Deanna Buttaro dlb3un, Lina He lh3su
  * LEVEL assignment
  * 10/29/15
 */

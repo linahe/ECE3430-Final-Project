@@ -2,7 +2,7 @@
  * debounce.h
  *
  *  Created on: Oct 16, 2015
- *      Author: // Deanna Buttaro dlb3un, Lina He lh3su, David Zekoski djz5qj
+ *      Author: // Deanna Buttaro dlb3un, Lina He lh3su
  */
 
 #ifndef DEBOUNCE_H_
