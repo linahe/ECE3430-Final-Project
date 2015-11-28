@@ -1,6 +1,6 @@
 #include <msp430.h> 
 #include "init.h"
-
+#include "memory_game.h"
 /*
  * main.c
  *
@@ -37,8 +37,7 @@ int main(void) {
 	//after calibration finished, need user to press button to indicate they are ready to begin game
 	BlinkLEDs(&LEDControl);
 	//METHOD HERE TO WAIT FOR BUTTON PRESS TO START GAME
-	WaitLowButton(&gPushButton);
-	WaitHighButton(&gPushButton);
+	startGame();
 
 
 
