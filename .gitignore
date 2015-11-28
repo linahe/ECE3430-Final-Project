@@ -6,4 +6,5 @@
 *.launch
 *.map
 *.xml
+/Debug
 
