@@ -19,7 +19,7 @@ typedef struct {
 
 } Game;
 
-void startGame();
+void startGame(Game * Game);
 
 void displayPattern();
 

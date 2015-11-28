@@ -1,13 +1,17 @@
 #include "memory_game.h"
 
 
-const Direction testPattern[PATTERN_LENGTH] = {North, South, East, West, North, South, East, West, North, South};
+Direction testPattern[PATTERN_LENGTH] = {North, South, East, West, North, South, East, West, North, South};
 
-void startGame()
+void startGame(Game * Game)
 {
 	WaitLowButton(&gPushButton);
 	WaitHighButton(&gPushButton);
 	//Change the gameState of Game struct to DisplayPattern
+	int i;
+	for(i = 0; i < PATTERN_LENGTH; i++) {
+		Game->pattern[i] = testPattern[i];
+	}
 }
 
 void displayPattern()

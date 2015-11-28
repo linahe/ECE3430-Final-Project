@@ -1,6 +1,6 @@
 #include <msp430.h> 
 #include "init.h"
-#include "memory_game.h"
+
 /*
  * main.c
  *
@@ -13,6 +13,8 @@
 
 #define TOLERANCE 15 //how many degrees of tolerance for the board to be considered level
 
+
+Game GameObj;
 LEDStruct LEDControl; //overall info stored about which leds to light and what brightness, etc
 unsigned char CurrentLEDCodeValue; //as interrupts progress, only light LEDs whose duty cycles have not been reached yet
 int i;
@@ -38,7 +40,7 @@ int main(void) {
 	BlinkLEDs(&LEDControl);
 
 	//METHOD HERE TO WAIT FOR BUTTON PRESS TO START GAME
-	startGame();
+	startGame(&GameObj);
 
 
 
