@@ -1,0 +1,9 @@
+*.out
+*.obj
+*.pp
+*.ccsproject
+*.cproject
+*.launch
+*.map
+*.xml
+
