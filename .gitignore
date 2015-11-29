@@ -8,3 +8,5 @@
 *.xml
 /Debug
 /.launches
+/Debug/ECE3430-Final-Project.map
+/Debug/ECE3430-Final-Project_linkInfo.xml

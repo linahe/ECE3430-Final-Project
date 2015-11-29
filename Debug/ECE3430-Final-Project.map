@@ -1,7 +1,7 @@
 ******************************************************************************
                   MSP430 Linker PC v4.4.3                      
 ******************************************************************************
->> Linked Sat Nov 28 19:13:04 2015
+>> Linked Sat Nov 28 19:16:08 2015
 
 OUTPUT FILE NAME:   <ECE3430-Final-Project.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs_noexit"  address: 0000d1f0
