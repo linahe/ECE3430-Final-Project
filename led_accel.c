@@ -120,36 +120,21 @@ void IndicateLED(CalibrationState myCalibrationState, LEDStruct * myLEDStruct) {
     {
             case XMaxState:
             	LightLED(BIT3);
-            	//SetAllLEDs(myLEDStruct, OFF);
-				//myLEDStruct->PulseWidth[XMAXLED] = TIMER0PD;
-				//myLEDStruct->LEDStatus = 0x08;
 				break;
             case XMinState:
             	LightLED(BIT7);
-            	//SetAllLEDs(myLEDStruct, OFF);
-            	//myLEDStruct->PulseWidth[XMINLED] = TIMER0PD;
-            	//myLEDStruct->LEDStatus = 0x80;
                 break;
             case YMaxState:
             	LightLED(BIT5);
-            	//SetAllLEDs(myLEDStruct, OFF);
-            	//myLEDStruct->PulseWidth[YMAXLED] = TIMER0PD;
-            	//myLEDStruct->LEDStatus = 0x20;
 				break;
             case YMinState:
             	LightLED(BIT1);
-            	//SetAllLEDs(myLEDStruct, OFF);
-            	//myLEDStruct->PulseWidth[YMINLED] = TIMER0PD;
-            	//myLEDStruct->LEDStatus = 0x02;
 				break;
             case ZMaxState:
             	LightLED(0xFF);
-            	//SetAllLEDs(myLEDStruct, TIMER0PD);
-            	//myLEDStruct->LEDStatus = 0xFF;
 				break;
             case ZMinState:
             	LightLED(0xAA);
-            	//myLEDStruct->LEDStatus = 0xAA;
 				break;
             case CalibrationDone:
 				break;
@@ -198,37 +183,22 @@ Direction DetermineDirection(long theta) {
 //Based off of what direction the board is tilted, light the LEDs in those directions
 void LightLEDsByDirection(LEDStruct * myLEDStruct) {
 
-	int Brightness = TIMER0PD; //all 1 brightness now //DetermineBrightness(myLEDStruct->State);
     switch(myLEDStruct->LEDDir)
     {
             case West:
             	LightLED(BIT3);
-            	//SetAllLEDs(myLEDStruct, OFF); //LED3
-				//myLEDStruct->PulseWidth[XMAXLED] = Brightness;
-				//myLEDStruct->LEDStatus = BIT3; //done
 				break;
             case North: //LED1
             	LightLED(BIT1);
-            	//SetAllLEDs(myLEDStruct, OFF);
-            	//myLEDStruct->PulseWidth[YMINLED] = Brightness;
-            	//myLEDStruct->LEDStatus = BIT1; //done
 				break;
             case East: //LED8 (top LED)
             	LightLED(BIT7);
-            	//SetAllLEDs(myLEDStruct, OFF);
-            	//myLEDStruct->PulseWidth[XMINLED] = Brightness;
-            	//myLEDStruct->LEDStatus = BIT7; //done
                 break;
             case South:
             	LightLED(BIT5);
-            	//SetAllLEDs(myLEDStruct, OFF);
-            	//myLEDStruct->PulseWidth[YMAXLED] = Brightness;
-            	//myLEDStruct->LEDStatus = BIT5; //done
 				break;
             case Flat:
             	LightLED(0xFF);
-            	//SetAllLEDs(myLEDStruct, Brightness);
-            	//myLEDStruct->LEDStatus = 0xFF;
                 break;
 
 

@@ -80,18 +80,9 @@ int main(void) {
 		switch(__even_in_range(TAIV, 10)) {
 			case 2: //capture control flag - turn off LED (CCIFG1)
 				//CCIFG1 = 10 in binary. transfer triggered when this flag set
-
-			/*	CurrentLEDCodeValue = LEDControl.LEDStatus;
-				for(i = 0; i < NUMLEDS; i++) {
-					if((LEDControl.PulseWidth)[i] <= LEDControl.LEDTimer) {
-						CurrentLEDCodeValue &= ~(1<<i);
-					}
-				}
-				LightLED(CurrentLEDCodeValue);
-				break;*/
+				break;
 		}
 
-	//LEDControl.LEDTimer += CONTROLPD;
 	TA0CCTL1 &= ~CCIFG; //clear capture control interrupt flag
 }
 
@@ -104,11 +95,5 @@ __interrupt void TimerA0_routine(void) {
 	//adc_accel
 	ReadADC();
 	Filter(); //store latest adc value read in a buffer
-
-	//LightLED(LEDControl.LEDStatus);//turn on LEDs
-	//reset LEDTimer to 0
-	//if(LEDControl.LEDTimer >= TIMER0PD) {
-	//	LEDControl.LEDTimer = 0;
-	//}
 
 }
