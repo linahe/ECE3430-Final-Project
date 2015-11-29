@@ -26,8 +26,7 @@ void StartCalibration(CalibrationState myCalibrationState, SwitchDefine * mySwit
 	}
 
 	//turn off all leds when done
-	SetAllLEDs(myLEDStruct, 0);
-	myLEDStruct->LEDStatus = 0x00;
+	LightLED(0x00);
 
 	CalculateZeros();
 }
@@ -140,17 +139,7 @@ void IndicateLED(CalibrationState myCalibrationState, LEDStruct * myLEDStruct) {
 				break;
 
     }
-
 }
-
-void SetAllLEDs(LEDStruct * myLEDStruct, int brightness) {
-	int i;
-	for(i = 0; i < NUMLEDS; i++) {
-		(myLEDStruct->PulseWidth)[i] = brightness;
-	}
-}
-
-
 
 void Send8Bits(unsigned char data) { //send 8 bit value to GPIO
 	unsigned int i;
@@ -200,8 +189,6 @@ void LightLEDsByDirection(LEDStruct * myLEDStruct) {
             case Flat:
             	LightLED(0xFF);
                 break;
-
-
     }
 }
 
@@ -209,8 +196,6 @@ void LightLEDsByDirection(LEDStruct * myLEDStruct) {
 
 void BlinkLEDs(LEDStruct *myLEDStruct)
 {
-	//SetAllLEDs(myLEDStruct, TIMER0PD);
-
 	LightLED(0xFF);		//Blink LEDs twice
 	__delay_cycles(500000);
 	LightLED(0x00);

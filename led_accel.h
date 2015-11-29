@@ -39,15 +39,11 @@ typedef enum
 } CalibrationState;
 
 typedef enum {
-	Flat, North, Northwest, West, Southwest, South, Southeast, East, Northeast
+	Flat, North, West, South, East
 } Direction;
 
 typedef struct {
-	unsigned char LEDStatus; //which LEDs to light, 2 byte unsigned char
-	unsigned int Period; //the smallest interval LED brightness can be
-	unsigned int PulseWidth[8]; //duty cycles for each individual LED
 	Direction LEDDir; //direction the tilt is in (N S E W etc)
-	unsigned int LEDTimer; //used with interrupts to determine when to turn off certain LEDs to do PWM
 } LEDStruct;
 
 
@@ -62,7 +58,7 @@ void CalculateZeros();
 void LightLED(unsigned char LEDNum); //make two byte value appear on the 7 segment displays
 void IndicateLED(CalibrationState myCalibrationState, LEDStruct * myLEDStruct);
 void Send8Bits(unsigned char data); //send a byte to the 7 segment display
-void SetAllLEDs(LEDStruct * myLEDStruct, int brightness);
+//void SetAllLEDs(LEDStruct * myLEDStruct, int brightness);
 void BlinkLEDs(LEDStruct *myLEDStruct);
 
 Direction DetermineDirection(long theta);

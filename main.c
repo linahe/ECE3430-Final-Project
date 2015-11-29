@@ -33,14 +33,11 @@ int main(void) {
 	myCalibrationState = XMaxState; //change to init later?
 	StartCalibration(myCalibrationState, &gPushButton, &LEDControl);
 
-	LightLED(LEDControl.LEDStatus);
-
 	//after calibration finished, need user to press button to indicate they are ready to begin game
 	BlinkLEDs(&LEDControl);
 
 	//METHOD HERE TO WAIT FOR BUTTON PRESS TO START GAME
 	startGame();
-
 
 
     while(1) {
@@ -66,8 +63,6 @@ int main(void) {
     	} else {
     		LEDControl.LEDDir = DetermineDirection(theta);
     	}
-    	SetAllLEDs(&LEDControl, OFF);
-    	SetAllLEDs(&LEDControl, TIMER0PD);
     	LightLEDsByDirection(&LEDControl);
     }
 

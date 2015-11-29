@@ -29,22 +29,8 @@ void InitializeVariables(void) {
 	g1mSTimer = 0;
 }
 
-/*void InitEncoder(EncoderDefinitions *myEncoder) {
-	myEncoder->RotaryState = Initialize; //set in default state
-	myEncoder->stateMachineCounter = 0; //set the counter of FSM progression
-
-}*/
-
-//so much hardcoding for now
 void InitLEDState(LEDStruct *LEDControl) {
-	LEDControl->LEDStatus = 0x00; //which LEDs to light
-	LEDControl->Period = CONTROLPD;
-
-	int i;
-	for(i = 0; i < NUMLEDS; i++) {
-		(LEDControl->PulseWidth)[i] = 0;
-	}
-
+	LightLED(0x00);
 }
 
 
