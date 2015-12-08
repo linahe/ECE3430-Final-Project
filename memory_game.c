@@ -28,7 +28,7 @@ void update() {
 			if (checkInput() && GameObj.inputIndex == PATTERN_LENGTH) { //MAKE SURE TO INCREMENT INDEX
 				P1OUT |= GLED;
 				GameObj.currentGameState = WinGame;
-			} else if(checkInput() && GameObject.inputIndex == GameObject.patternIndex) {
+			} else if(checkInput() && (GameObj.inputIndex == GameObj.patternIndex)) {
 				P1OUT |= GLED;
 				BlinkLEDs();
 				GameObj.patternIndex += 2;
