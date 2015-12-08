@@ -8,6 +8,13 @@
 #include <msp430.h>
 
 
+extern Game GameObj;
+
+
+//MOVE LATER
+const Direction userInitialPattern[PATTERN_LENGTH] = {Flat, Flat, Flat, Flat, Flat, Flat, Flat, Flat, Flat, Flat};
+const Direction testPattern[PATTERN_LENGTH] = {North, South, East, West, North, South, East, West, North, South};
+
 void InitializeHardware() {
     WDTCTL = WDTPW | WDTHOLD;		// Stop watchdog timer
     InitTimerSystem(); //set up the timers interrupts
@@ -15,6 +22,7 @@ void InitializeHardware() {
     InitializeVariables();
     InitLEDState();
     InitLEDDisplay(); //set up the latch, clock and inputs for the 7 segment display
+    InitGame();
 }
 
 //set up default values of global vars. purposes expained in debounce.h
@@ -81,6 +89,17 @@ void InitLEDDisplay() {
 	P1OUT &= ~BLANK; //set blank to low to enable sending data
 	P2DIR |= LATCH; //LATCH high!
 	P2OUT &= ~LATCH; //tick latch low
+}
+
+void InitGame() {
+	int i;
+	for(i = 0; i < PATTERN_LENGTH; i++) {
+		GameObj.pattern[i] = testPattern[i];
+		GameObj.userInput[i] = userInitialPattern[i];
+	}
+	GameObj.patternIndex = 2;
+	GameObj.inputIndex = 0;
+	GameObj.currentGameState = StartGame;
 
 }
 

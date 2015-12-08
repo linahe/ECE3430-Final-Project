@@ -3,11 +3,11 @@
 #include "debounce.h"
 extern Game GameObj;
 
-Direction testPattern[PATTERN_LENGTH] = {North, South, East, West, North, South, East, West, North, South};
 calculations calc;
 volatile int theta, phi; //for debugging
 extern int X0, Y0, Z0, XAvg, YAvg, ZAvg;
 Direction LEDDir;
+
 
 void update() {
 	switch (GameObj.currentGameState) {
@@ -47,10 +47,7 @@ void startGame()
 	WaitLowButton(&gPushButton);
 	WaitHighButton(&gPushButton);
 	//Change the gameState of Game struct to DisplayPattern
-	int i;
-	for(i = 0; i < PATTERN_LENGTH; i++) {
-		GameObj.pattern[i] = testPattern[i];
-	}
+
 }
 
 void displayPattern()

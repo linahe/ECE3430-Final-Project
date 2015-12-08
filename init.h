@@ -31,5 +31,6 @@ void InitTimerSystem(); //This should set up a periodic interrupt at a 1 mS rate
 void InitPorts(); //This should also be called from ManageSoftwareTimers every 10 seconds
 void InitLEDState(); //init the struct to contain all the LED info
 void InitLEDDisplay(); //Setting up inputs / latch / blank for 7 segment display
+void InitGame();
 
 #endif /* ROTARY_ENCODER_DLB3UN_INIT_H_ */
