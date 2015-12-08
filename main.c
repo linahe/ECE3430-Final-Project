@@ -42,7 +42,7 @@ int main(void) {
 
     while(1) {
 
-    	update(&GameObj); //calls all different states of game
+    	update(); //calls all different states of game
 
 
     	//take cordic angle input

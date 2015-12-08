@@ -42,11 +42,6 @@ typedef enum {
 	Flat, North, West, South, East
 } Direction;
 
-typedef struct {
-	Direction LEDDir; //direction the tilt is in (N S E W etc)
-} LEDStruct;
-
-
 
 void StartCalibration(CalibrationState myCalibrationState, SwitchDefine * mySwitch);
 void WaitLowButton(SwitchDefine * mySwitch);
