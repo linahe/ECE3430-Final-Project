@@ -28,7 +28,7 @@ void update() {
 			if (checkInput() && GameObj.inputIndex == PATTERN_LENGTH) { //MAKE SURE TO INCREMENT INDEX
 				P1OUT |= GLED;
 				GameObj.currentGameState = WinGame;
-			} else if(checkInput() && GameObject.inputIndex == GameObject.patternIndex) {
+			} else if(checkInput() && GameObj.inputIndex == GameObj.patternIndex) {
 				P1OUT |= GLED;
 				BlinkLEDs();
 				GameObj.patternIndex += 2;
@@ -99,9 +99,9 @@ Direction receiveUserInput()
 			LEDDir = DetermineDirection(theta);
 		LightLEDsByDirection(LEDDir);
 
-		if (userInput == Flat)
+		if (userInput == Flat && LEDDir != Flat)
 		{
-			if (userInput == Flat && inputTimestamp == 0)
+			if (inputTimestamp == 0)
 			{
 				inputTimestamp = g1mSTimer;
 				currentDirection = LEDDir;
@@ -109,13 +109,35 @@ Direction receiveUserInput()
 			else if (currentDirection != LEDDir && g1mSTimer - inputTimestamp < TIMER_THRESHOLD)
 			{
 				inputTimestamp = g1mSTimer;
-				currentDirection = LEDDir
+				currentDirection = LEDDir;
 			}
-			else if (g1mSTimer - inputTimestamp >= TIMER_THRESHOLD && )
+			else if (g1mSTimer - inputTimestamp >= TIMER_THRESHOLD)
+			{
+				userInput = currentDirection;
+			}
+			else
+				continue;
 		}
 		else
 		{
+			if (LEDDir == Flat && currentDirection != Flat)
+			{
+				inputTimestamp = g1mSTimer;
+				currentDirection = Flat;
+			}
+			else if (LEDDir != Flat && g1mSTimer - inputTimestamp < TIMER_THRESHOLD)
+			{
+				inputTimestamp = 0;
+				userInput = Flat;
+				currentDirection = Flat;
 
+			}
+			else if (g1mSTimer - inputTimestamp >= TIMER_THRESHOLD )
+			{
+				return userInput;
+			}
+			else
+				continue;
 		}
 
 	}
