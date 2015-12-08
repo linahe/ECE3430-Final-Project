@@ -50,6 +50,12 @@ void startGame()
 
 void displayPattern()
 {
+	int i;
+	for (i = 0; i < GameObj.patternIndex; i++)
+	{
+		LightLEDsByDirection(GameObj.pattern[i]);
+		__delay_cycles(500000);
+	}
 	//each time, will need to increment how much of the array is iterated through
 
 
@@ -60,6 +66,7 @@ void receiveUserInput()
 	//just ONE input at a time, then CHECK that input
 	//check where they are tilted to pass threshold of time
 	//then must return to flat for threshold of time
+
 
 }
 
