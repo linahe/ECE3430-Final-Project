@@ -77,7 +77,8 @@ Direction receiveUserInput()
 	//check where they are tilted to pass threshold of time
 	//then must return to flat for threshold of time
 	Direction userInput = Flat;
-	unsigned int inputTimestamp;
+	Direction currentDirection = Flat;
+	unsigned int inputTimestamp = 0;
 	while(1)
 	{
 		calc.x = XAvg - X0;
@@ -98,7 +99,46 @@ Direction receiveUserInput()
 			LEDDir = DetermineDirection(theta);
 		LightLEDsByDirection(LEDDir);
 
+		if (userInput == Flat && LEDDir != Flat)
+		{
+			if (inputTimestamp == 0)
+			{
+				inputTimestamp = g1mSTimer;
+				currentDirection = LEDDir;
+			}
+			else if (currentDirection != LEDDir && g1mSTimer - inputTimestamp < TIMER_THRESHOLD)
+			{
+				inputTimestamp = g1mSTimer;
+				currentDirection = LEDDir;
+			}
+			else if (g1mSTimer - inputTimestamp >= TIMER_THRESHOLD)
+			{
+				userInput = currentDirection;
+			}
+			else
+				continue;
+		}
+		else
+		{
+			if (LEDDir == Flat && currentDirection != Flat)
+			{
+				inputTimestamp = g1mSTimer;
+				currentDirection = Flat;
+			}
+			else if (LEDDir != Flat && g1mSTimer - inputTimestamp < TIMER_THRESHOLD)
+			{
+				inputTimestamp = 0;
+				userInput = Flat;
+				currentDirection = Flat;
 
+			}
+			else if (g1mSTimer - inputTimestamp >= TIMER_THRESHOLD )
+			{
+				return userInput;
+			}
+			else
+				continue;
+		}
 
 	}
 	return Flat;
