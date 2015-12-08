@@ -11,18 +11,15 @@
  * of the tilt will light up in varying brightness depending on the severity of tilt.
  */
 
-#define TOLERANCE 15 //how many degrees of tolerance for the board to be considered level
-
 
 Game GameObj;
-Direction LEDDir;
 unsigned char CurrentLEDCodeValue; //as interrupts progress, only light LEDs whose duty cycles have not been reached yet
 int i;
 CalibrationState myCalibrationState; //used at beginning to calibrate board
 int X0, Y0, Z0, XAvg, YAvg, ZAvg; //used as externs in led_accel.c to calculate 0s
-calculations calc;
 
-volatile int theta, phi; //for debugging
+
+
 int main(void) {
 
 	InitializeHardware(); //set up ports, timers, interrupts //FIX!!!!
@@ -44,29 +41,6 @@ int main(void) {
 
     	update(&GameObj); //calls all different states of game
 
-
-    	//take cordic angle input
-    	//put x-x0, y-y0, and z-z0 in calcs
-    	//get theta and phi
-    	//use those to change brightness of leds
-    	calc.x = XAvg - X0;
-    	calc.y = YAvg - Y0;
-    	calc.z = ZAvg - Z0;
-    	calculateArcHypZ(&calc);
-    	theta = (long) calc.angleTheta >> 8;	//divide by 256 to see angles 0-360
-    	phi = (long) calc.anglePhi >> 8;
-
-    	if(phi > 90) {
-    		phi = 360 - phi;
-    	}
-
-
-    	if (phi >= 90-TOLERANCE) { //2 degrees a little too sensitive
-    		LEDDir = Flat;
-    	} else {
-    		LEDDir = DetermineDirection(theta);
-    	}
-    	LightLEDsByDirection(LEDDir);
     }
 
 	return 0;

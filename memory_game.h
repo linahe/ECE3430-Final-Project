@@ -5,6 +5,8 @@
 #include "led_accel.h"
 
 #define PATTERN_LENGTH 10
+#define TOLERANCE 15 //how many degrees of tolerance for the board to be considered level
+
 
 //Direction pattern1[PATTERN_LENGTH] = {North, South, East, West, North, South, East, West, North, South};
 //Direction pattern2[PATTERN_LENGTH] = {North, North, West, South, East, East, East, South, West, North};
@@ -29,7 +31,7 @@ void startGame();
 
 void displayPattern();
 
-void receiveUserInput();
+Direction receiveUserInput();
 
 int checkInput();
 

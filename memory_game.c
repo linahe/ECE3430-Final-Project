@@ -1,7 +1,13 @@
 #include "memory_game.h"
-
+#include "cordic.h"
+#include "debounce.h"
 extern Game GameObj;
+
 Direction testPattern[PATTERN_LENGTH] = {North, South, East, West, North, South, East, West, North, South};
+calculations calc;
+volatile int theta, phi; //for debugging
+extern int X0, Y0, Z0, XAvg, YAvg, ZAvg;
+Direction LEDDir;
 
 void update() {
 	switch (GameObj.currentGameState) {
@@ -60,12 +66,41 @@ void displayPattern()
 
 }
 
-void receiveUserInput()
+Direction receiveUserInput()
 {
 	//just ONE input at a time, then CHECK that input
 	//check where they are tilted to pass threshold of time
 	//then must return to flat for threshold of time
+	Direction userInput = Flat;
+	while(1)
+	{
+		calc.x = XAvg - X0;
+		calc.y = YAvg - Y0;
+		calc.z = ZAvg - Z0;
+		calculateArcHypZ(&calc);
+		theta = (long) calc.angleTheta >> 8;	//divide by 256 to see angles 0-360
+		phi = (long) calc.anglePhi >> 8;
 
+		if(phi > 90) {
+			phi = 360 - phi;
+		}
+
+
+		if (phi >= 90-TOLERANCE && userInput == Flat) {
+			LEDDir = Flat;
+		}
+		else if(phi >= 90-TOLERANCE)
+		{
+			LEDDir = Flat;
+			return userInput;
+		}
+		else {
+			LEDDir = DetermineDirection(theta);
+			userInput = LEDDir;
+		}
+		LightLEDsByDirection(LEDDir);
+	}
+	return Flat;
 
 }
 
