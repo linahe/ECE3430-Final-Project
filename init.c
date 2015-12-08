@@ -73,8 +73,9 @@ void InitTimerSystem() {
 }
 
 void InitPorts() {
-	P1DIR |= GLED + SMCLK;				// Make LEDs and clock outputs
+	P1DIR |= GLED + RLED + SMCLK;				// Make LEDs and clock outputs
 	P1OUT &= ~RLED;
+	P1OUT |= GLED;
 	P1SEL |= SMCLK;
 
 	P1DIR &= ~BTN;	// set direction as input
