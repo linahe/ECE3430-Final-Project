@@ -15,7 +15,7 @@
 
 
 Game GameObj;
-LEDStruct LEDControl; //overall info stored about which leds to light and what brightness, etc
+Direction LEDDir;
 unsigned char CurrentLEDCodeValue; //as interrupts progress, only light LEDs whose duty cycles have not been reached yet
 int i;
 CalibrationState myCalibrationState; //used at beginning to calibrate board
@@ -25,16 +25,16 @@ calculations calc;
 volatile int theta, phi; //for debugging
 int main(void) {
 
-	InitializeHardware(&LEDControl); //set up ports, timers, interrupts
+	InitializeHardware(); //set up ports, timers, interrupts //FIX!!!!
 	ConfigureADC(); //get ADC set up to start reading values
 
-	BlinkLEDs(&LEDControl);
+	BlinkLEDs();
 
 	myCalibrationState = XMaxState; //change to init later?
-	StartCalibration(myCalibrationState, &gPushButton, &LEDControl);
+	StartCalibration(myCalibrationState, &gPushButton);
 
 	//after calibration finished, need user to press button to indicate they are ready to begin game
-	BlinkLEDs(&LEDControl);
+	BlinkLEDs();
 
 	//METHOD HERE TO WAIT FOR BUTTON PRESS TO START GAME
 	//startGame(); //NEED TO PUSH BUTTON TO START
@@ -62,11 +62,11 @@ int main(void) {
 
 
     	if (phi >= 90-TOLERANCE) { //2 degrees a little too sensitive
-    		LEDControl.LEDDir = Flat;
+    		LEDDir = Flat;
     	} else {
-    		LEDControl.LEDDir = DetermineDirection(theta);
+    		LEDDir = DetermineDirection(theta);
     	}
-    	LightLEDsByDirection(&LEDControl);
+    	LightLEDsByDirection(LEDDir);
     }
 
 	return 0;

@@ -7,8 +7,6 @@
 
 #include <msp430.h>
 #include "adc_accel.h"
-#include "led_accel.h"
-#include "debounce.h"
 #include "cordic.h"
 #include "memory_game.h"
 
@@ -22,7 +20,7 @@
 #define SMCLK BIT4
 //#define ONEMS 125 //Number of ticks for 125khz clock to take one millisecond
 
-void InitializeHardware(LEDStruct *LEDControl); // Initialize all hardware subsystems
+void InitializeHardware(); // Initialize all hardware subsystems
 void InitializeVariables(void); //Initialize all variables
 
 //initialize a specific switch
@@ -31,7 +29,7 @@ void InitSwitch(SwitchDefine *SwitchInput, char* Port, unsigned int Pin, unsigne
 //These are explicitly called from within InitializeHardware()
 void InitTimerSystem(); //This should set up a periodic interrupt at a 1 mS rate using SMCLK as the clock source.
 void InitPorts(); //This should also be called from ManageSoftwareTimers every 10 seconds
-void InitLEDState(LEDStruct *LEDControl); //init the struct to contain all the LED info
+void InitLEDState(); //init the struct to contain all the LED info
 void InitLEDDisplay(); //Setting up inputs / latch / blank for 7 segment display
 
 #endif /* ROTARY_ENCODER_DLB3UN_INIT_H_ */

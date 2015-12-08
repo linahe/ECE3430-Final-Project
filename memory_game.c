@@ -3,29 +3,28 @@
 extern Game GameObj;
 Direction testPattern[PATTERN_LENGTH] = {North, South, East, West, North, South, East, West, North, South};
 
-GameState update(Game *game) {
-	switch (game->currentGameState) {
+void update() {
+	switch (GameObj.currentGameState) {
 		case StartGame:
 			startGame();
-			game->currentGameState = DisplayPattern;
+			GameObj.currentGameState = DisplayPattern;
 		break;
 		case DisplayPattern:
 			displayPattern();
-			game->currentGameState = UserInput;
+			GameObj.currentGameState = UserInput;
 		break;
 		case UserInput:
 			receiveUserInput();
-			game->currentGameState = CheckInput;
+			GameObj.currentGameState = CheckInput;
 		break;
 		case CheckInput:
-			int correct = checkInput();
-			if (correct && game->index == PATTERN_LENGTH) { //MAKE SURE TO INCREMENT INDEX
-				game->currentGameState = WinGame;
+			if (checkInput() && GameObj.inputIndex == PATTERN_LENGTH) { //MAKE SURE TO INCREMENT INDEX
+				GameObj.currentGameState = WinGame;
 			}
-			else if(correct) {
-				game->currentGameState = UserInput;
+			else if(checkInput()) {
+				GameObj.currentGameState = UserInput;
 			} else {
-				game->currentGameState = LoseGame;
+				GameObj.currentGameState = LoseGame;
 			}
 		break;
 		case WinGame:
