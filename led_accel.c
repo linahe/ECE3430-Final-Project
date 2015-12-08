@@ -13,12 +13,12 @@ int XMax, XMin, YMax, YMin, ZMax, ZMin;
 extern int X0, Y0, Z0, XAvg, YAvg, ZAvg;
 
 
-void StartCalibration(CalibrationState myCalibrationState, SwitchDefine * mySwitch, LEDStruct * myLEDStruct)
+void StartCalibration(CalibrationState myCalibrationState, SwitchDefine * mySwitch)
 {
 	myCalibrationState = XMaxState;
 	while(myCalibrationState != CalibrationDone)
 	{
-		IndicateLED(myCalibrationState, myLEDStruct); //LED stuff
+		IndicateLED(myCalibrationState); //LED stuff
 		WaitLowButton(mySwitch);
 		WaitHighButton(mySwitch);
 		StoreValue(myCalibrationState);
@@ -113,7 +113,7 @@ void LightLED(unsigned char LEDNum) {
 }
 
 
-void IndicateLED(CalibrationState myCalibrationState, LEDStruct * myLEDStruct) {
+void IndicateLED(CalibrationState myCalibrationState) {
 
     switch(myCalibrationState)
     {
@@ -170,9 +170,9 @@ Direction DetermineDirection(long theta) {
 }
 
 //Based off of what direction the board is tilted, light the LEDs in those directions
-void LightLEDsByDirection(LEDStruct * myLEDStruct) {
+void LightLEDsByDirection(Direction LEDDir) {
 
-    switch(myLEDStruct->LEDDir)
+    switch(LEDDir)
     {
             case West:
             	LightLED(BIT3);
@@ -194,7 +194,7 @@ void LightLEDsByDirection(LEDStruct * myLEDStruct) {
 
 
 
-void BlinkLEDs(LEDStruct *myLEDStruct)
+void BlinkLEDs()
 {
 	LightLED(0xFF);		//Blink LEDs twice
 	__delay_cycles(500000);

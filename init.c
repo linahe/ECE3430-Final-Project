@@ -8,12 +8,12 @@
 #include <msp430.h>
 
 
-void InitializeHardware(LEDStruct *LEDControl) {
+void InitializeHardware() {
     WDTCTL = WDTPW | WDTHOLD;		// Stop watchdog timer
     InitTimerSystem(); //set up the timers interrupts
     InitPorts(); //set up the LED and buttons
     InitializeVariables();
-    InitLEDState(LEDControl);
+    InitLEDState();
     InitLEDDisplay(); //set up the latch, clock and inputs for the 7 segment display
 }
 
@@ -29,7 +29,7 @@ void InitializeVariables(void) {
 	g1mSTimer = 0;
 }
 
-void InitLEDState(LEDStruct *LEDControl) {
+void InitLEDState() {
 	LightLED(0x00);
 }
 

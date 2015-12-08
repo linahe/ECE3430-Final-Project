@@ -48,7 +48,7 @@ typedef struct {
 
 
 
-void StartCalibration(CalibrationState myCalibrationState, SwitchDefine * mySwitch, LEDStruct * myLEDStruct);
+void StartCalibration(CalibrationState myCalibrationState, SwitchDefine * mySwitch);
 void WaitLowButton(SwitchDefine * mySwitch);
 void WaitHighButton(SwitchDefine * mySwitch);
 void StoreValue(CalibrationState myCalibrationState);
@@ -56,13 +56,13 @@ CalibrationState GetNextCalibrationState(CalibrationState myCalibrationState);
 void CalculateZeros();
 
 void LightLED(unsigned char LEDNum); //make two byte value appear on the 7 segment displays
-void IndicateLED(CalibrationState myCalibrationState, LEDStruct * myLEDStruct);
+void IndicateLED(CalibrationState myCalibrationState);
 void Send8Bits(unsigned char data); //send a byte to the 7 segment display
 //void SetAllLEDs(LEDStruct * myLEDStruct, int brightness);
-void BlinkLEDs(LEDStruct *myLEDStruct);
+void BlinkLEDs();
 
 Direction DetermineDirection(long theta);
-void LightLEDsByDirection(LEDStruct * myLEDStruct);
+void LightLEDsByDirection(Direction LEDDir);
 
 
 
