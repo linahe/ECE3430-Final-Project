@@ -37,10 +37,13 @@ int main(void) {
 	BlinkLEDs(&LEDControl);
 
 	//METHOD HERE TO WAIT FOR BUTTON PRESS TO START GAME
-	startGame();
+	//startGame(); //NEED TO PUSH BUTTON TO START
 
 
     while(1) {
+
+    	update(&GameObj); //calls all different states of game
+
 
     	//take cordic angle input
     	//put x-x0, y-y0, and z-z0 in calcs

@@ -3,8 +3,7 @@
 
 #include <msp430.h>
 #include "led_accel.h"
-
-#define PATTERN_LENGTH 10
+#include "game_patterns.h"
 
 typedef enum {
 	StartGame, DisplayPattern, UserInput, CheckInput, WinGame, LoseGame
@@ -18,13 +17,15 @@ typedef struct {
 
 } Game;
 
+GameState update();
+
 void startGame();
 
 void displayPattern();
 
 void receiveUserInput();
 
-void checkInput();
+int checkInput();
 
 void winGame();
 
