@@ -22,6 +22,7 @@ int X0, Y0, Z0, XAvg, YAvg, ZAvg; //used as externs in led_accel.c to calculate 
 
 int main(void) {
 
+
 	InitializeHardware(); //set up ports, timers, interrupts //FIX!!!!
 	ConfigureADC(); //get ADC set up to start reading values
 
@@ -40,6 +41,7 @@ int main(void) {
     while(1) {
 
     	update(); //calls all different states of game
+
 
     }
 

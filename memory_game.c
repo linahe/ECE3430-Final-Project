@@ -20,16 +20,24 @@ void update() {
 			GameObj.currentGameState = UserInput;
 		break;
 		case UserInput:
+			P1OUT &= ~GLED;
 			receiveUserInput();
 			GameObj.currentGameState = CheckInput;
 		break;
 		case CheckInput:
 			if (checkInput() && GameObj.inputIndex == PATTERN_LENGTH) { //MAKE SURE TO INCREMENT INDEX
+				P1OUT |= GLED;
 				GameObj.currentGameState = WinGame;
-			}
-			else if(checkInput()) {
+			} else if(checkInput() && GameObject.inputIndex == GameObject.patternIndex) {
+				P1OUT |= GLED;
+				BlinkLEDs();
+				GameObj.patternIndex += 2;
+				GameObj.currentGameState = DisplayPattern;
+			}	else if(checkInput()) {
+				GameObj.inputIndex++;
 				GameObj.currentGameState = UserInput;
 			} else {
+				P1OUT &= ~GLED;
 				GameObj.currentGameState = LoseGame;
 			}
 		break;
