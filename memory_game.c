@@ -101,6 +101,11 @@ int checkInput()
 {
 	//return 1 if correct
 	//return 0 if incorrect
+	if(GameObj.pattern[inputIndex] == GameObj.userInput[inputIndex]) {
+		return 1;
+	} else {
+		return 0;
+	}
 
 }
 
