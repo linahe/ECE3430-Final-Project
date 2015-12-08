@@ -12,7 +12,8 @@ typedef enum {
 typedef struct {
 	Direction pattern[PATTERN_LENGTH];
 	Direction userInput[PATTERN_LENGTH];
-	unsigned int index;
+	unsigned int patternIndex;
+	unsigned int inputIndex;
 	GameState currentGameState;
 
 } Game;
