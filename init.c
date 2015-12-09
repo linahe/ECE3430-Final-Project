@@ -97,7 +97,7 @@ void InitGame() {
 		GameObj.pattern[i] = testPattern[i];
 		GameObj.userInput[i] = userInitialPattern[i];
 	}
-	GameObj.patternIndex = 2;
+	GameObj.patternIndex = 1;
 	GameObj.inputIndex = 0;
 	GameObj.currentGameState = StartGame;
 

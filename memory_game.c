@@ -16,24 +16,26 @@ void update() {
 			GameObj.currentGameState = DisplayPattern;
 		break;
 		case DisplayPattern:
+			GameObj.inputIndex = 0; // reset index at beginning of each display so correct entire pattern again
 			displayPattern();
 			GameObj.currentGameState = UserInput;
 		break;
 		case UserInput:
 			P1OUT &= ~GLED;
-			receiveUserInput();
+			GameObj.userInput[GameObj.inputIndex] =  receiveUserInput();
 			GameObj.currentGameState = CheckInput;
 		break;
 		case CheckInput:
-			if (checkInput() && GameObj.inputIndex == PATTERN_LENGTH) { //MAKE SURE TO INCREMENT INDEX
+			GameObj.pass = checkInput();
+			if (GameObj.pass && GameObj.inputIndex == PATTERN_LENGTH) { //MAKE SURE TO INCREMENT INDEX
 				P1OUT |= GLED;
 				GameObj.currentGameState = WinGame;
-			} else if(checkInput() && (GameObj.inputIndex == GameObj.patternIndex)) {
+			} else if(GameObj.pass && (GameObj.inputIndex == GameObj.patternIndex)) {
 				P1OUT |= GLED;
 				BlinkLEDs();
 				GameObj.patternIndex += 2;
 				GameObj.currentGameState = DisplayPattern;
-			}	else if(checkInput()) {
+			}	else if(GameObj.pass) {
 				GameObj.inputIndex++;
 				GameObj.currentGameState = UserInput;
 			} else {
@@ -61,7 +63,7 @@ void startGame()
 void displayPattern()
 {
 	int i;
-	for (i = 0; i < GameObj.patternIndex; i++)
+	for (i = 0; i <= GameObj.patternIndex; i++)
 	{
 		LightLEDsByDirection(GameObj.pattern[i]);
 		__delay_cycles(500000);
@@ -111,7 +113,7 @@ Direction receiveUserInput()
 				inputTimestamp = g1mSTimer;
 				currentDirection = LEDDir;
 			}
-			else if (g1mSTimer - inputTimestamp >= TIMER_THRESHOLD)
+			else if (g1mSTimer - inputTimestamp >= TIMER_THRESHOLD) //going in here when flat
 			{
 				userInput = currentDirection;
 			}
@@ -132,16 +134,16 @@ Direction receiveUserInput()
 				currentDirection = Flat;
 
 			}
-			else if (g1mSTimer - inputTimestamp >= TIMER_THRESHOLD )
+			else if (g1mSTimer - inputTimestamp >= TIMER_THRESHOLD && userInput != Flat && LEDDir == Flat)
 			{
 				return userInput;
 			}
 			else
-				continue;
+				continue; //goes here if flat at beginning
 		}
 
 	}
-	return Flat;
+
 
 }
 
