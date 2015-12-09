@@ -12,7 +12,7 @@ extern Game GameObj;
 
 
 const Direction userInitialPattern[PATTERN_LENGTH] = {Flat, Flat, Flat, Flat, Flat, Flat, Flat, Flat, Flat, Flat};
-const Direction testPattern[PATTERN_LENGTH] = {North, North, East, West, North, South, East, West, North, South};
+const Direction testPattern[PATTERN_LENGTH] = {North, South, East, West, North, South, East, West, North, South};
 const Direction gamePatterns[PATTERN_LENGTH][PATTERN_LENGTH] = {
 	{ North, North, South, East, South, West, North, West, West, South} , //1
 	{ West, East, South, West, North, South, West, West, East, South } , //2
@@ -106,7 +106,7 @@ void InitGame() {
 	int patternToUse = (g1mSTimer % 10);
 	int i;
 	for(i = 0; i < PATTERN_LENGTH; i++) {
-		GameObj.pattern[i] = gamePatterns[patternToUse][i];
+		GameObj.pattern[i] = testPattern[i];//gamePatterns[patternToUse][i];//
 		GameObj.userInput[i] = userInitialPattern[i];
 	}
 	GameObj.patternIndex = 1;

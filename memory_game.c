@@ -55,7 +55,6 @@ void update() {
 
 void startGame()
 {
-	LightLED(0x00);
 	InitGame();
 	WaitLowButton(&gPushButton);
 	WaitHighButton(&gPushButton);
@@ -167,7 +166,6 @@ int checkInput()
 void winGame()
 {
 	LightLED(0x5D); //smiley face
-
 	startGame();
 
 }
@@ -190,7 +188,7 @@ void loseGame()
 	__delay_cycles(500000);
 	LightLED(0xFF);
 	__delay_cycles(500000);
-
+	LightLED(0x00); //turn off LEDs
 	startGame();
 
 
