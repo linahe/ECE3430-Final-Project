@@ -67,6 +67,8 @@ void displayPattern()
 	{
 		LightLEDsByDirection(GameObj.pattern[i]);
 		__delay_cycles(500000);
+		LightLED(0x00);
+		__delay_cycles(500000);
 	}
 	//each time, will need to increment how much of the array is iterated through
 

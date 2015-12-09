@@ -7,7 +7,7 @@
 #define PATTERN_LENGTH 10
 #define TOLERANCE 25 //how many degrees of tolerance for the board to be considered level
 
-#define TIMER_THRESHOLD 100
+#define TIMER_THRESHOLD 250
 
 
 //Direction pattern1[PATTERN_LENGTH] = {North, South, East, West, North, South, East, West, North, South};
