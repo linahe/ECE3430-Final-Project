@@ -6,14 +6,25 @@
  */
 #include "init.h"
 #include <msp430.h>
-
+#include <stdlib.h>
 
 extern Game GameObj;
 
 
-//MOVE LATER
 const Direction userInitialPattern[PATTERN_LENGTH] = {Flat, Flat, Flat, Flat, Flat, Flat, Flat, Flat, Flat, Flat};
 const Direction testPattern[PATTERN_LENGTH] = {North, South, East, West, North, South, East, West, North, South};
+const Direction gamePatterns[PATTERN_LENGTH][PATTERN_LENGTH] = {
+	{ North, North, South, East, South, West, North, West, West, South} , //1
+	{ West, East, South, West, North, South, West, West, East, South } , //2
+	{ West, North, West, East, East, South, North, South, East, West } , //3
+	{ South, North, South, West, West, East, East, South, West, North } , //4
+	{ South, North, East, West, East, North, South, North, West, South } , //5
+	{ East, East, North, East, South, West, South, East, North, West } , //6
+	{ East, West, North, South, West, South, East, North, West, South }, //7
+	{ North, West, South, West, East, South, North, East, East, South }, //8
+	{ North, East, North, East, West, North, South, West, West, North }, //9
+	{ West, North, South, South, West, East, South, North, North, West } //10
+};
 
 void InitializeHardware() {
     WDTCTL = WDTPW | WDTHOLD;		// Stop watchdog timer
