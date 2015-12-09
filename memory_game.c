@@ -108,36 +108,31 @@ Direction receiveUserInput()
 				inputTimestamp = g1mSTimer;
 				currentDirection = LEDDir;
 			}
-			else if (currentDirection != LEDDir && g1mSTimer - inputTimestamp < TIMER_THRESHOLD) //resetting if direction switched before time threshold
+			else if (g1mSTimer - inputTimestamp >= TIMER_THRESHOLD && currentDirection == LEDDir) //going in here when flat
+			{
+				userInput = currentDirection;
+			}
+			else if (currentDirection != LEDDir) //resetting if direction switched before time threshold
 			{
 				inputTimestamp = g1mSTimer;
 				currentDirection = LEDDir;
-			}
-			else if (g1mSTimer - inputTimestamp >= TIMER_THRESHOLD) //going in here when flat
-			{
-				userInput = currentDirection;
 			}
 			else
 				continue;
 		}
 		else
 		{
-			if(LEDDir != Flat ) //put in new direction
+			if(LEDDir != Flat && currentDirection != LEDDir) //put in new direction
 			{
 				inputTimestamp = g1mSTimer;
 				currentDirection = LEDDir;
+				userInput = Flat;
 
-			} else if (LEDDir == Flat && currentDirection != Flat)
+			}
+			else if (LEDDir == Flat && currentDirection != Flat)
 			{
 				inputTimestamp = g1mSTimer;
 				currentDirection = Flat;
-			}
-			else if (LEDDir != Flat && g1mSTimer - inputTimestamp < TIMER_THRESHOLD)
-			{
-				inputTimestamp = 0;
-				userInput = Flat;
-				currentDirection = Flat;
-
 			}
 			else if (g1mSTimer - inputTimestamp >= TIMER_THRESHOLD && userInput != Flat && LEDDir == Flat)
 			{
