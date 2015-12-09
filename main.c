@@ -23,13 +23,16 @@ int X0, Y0, Z0, XAvg, YAvg, ZAvg; //used as externs in led_accel.c to calculate 
 int main(void) {
 
 
-	InitializeHardware(); //set up ports, timers, interrupts //FIX!!!!
+	InitializeHardware(); //set up ports, timers, interrupts
+
 	ConfigureADC(); //get ADC set up to start reading values
 
 	BlinkLEDs();
 
 	myCalibrationState = XMaxState; //change to init later?
 	StartCalibration(myCalibrationState, &gPushButton);
+
+	InitGame(); //initialize AFTER configuration so get random number based off of time to calibrate
 
 	//after calibration finished, need user to press button to indicate they are ready to begin game
 	BlinkLEDs();

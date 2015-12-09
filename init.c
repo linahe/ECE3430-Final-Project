@@ -33,7 +33,6 @@ void InitializeHardware() {
     InitializeVariables();
     InitLEDState();
     InitLEDDisplay(); //set up the latch, clock and inputs for the 7 segment display
-    InitGame();
 }
 
 //set up default values of global vars. purposes expained in debounce.h
@@ -103,9 +102,11 @@ void InitLEDDisplay() {
 }
 
 void InitGame() {
+
+	int patternToUse = (g1mSTimer % 10);
 	int i;
 	for(i = 0; i < PATTERN_LENGTH; i++) {
-		GameObj.pattern[i] = testPattern[i];
+		GameObj.pattern[i] = gamePatterns[patternToUse][i];
 		GameObj.userInput[i] = userInitialPattern[i];
 	}
 	GameObj.patternIndex = 1;
