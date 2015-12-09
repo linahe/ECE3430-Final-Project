@@ -32,7 +32,7 @@ int main(void) {
 	myCalibrationState = XMaxState; //change to init later?
 	StartCalibration(myCalibrationState, &gPushButton);
 
-	InitGame(); //initialize AFTER configuration so get random number based off of time to calibrate
+	//InitGame(); //initialize AFTER configuration so get random number based off of time to calibrate
 
 	//after calibration finished, need user to press button to indicate they are ready to begin game
 	BlinkLEDs();

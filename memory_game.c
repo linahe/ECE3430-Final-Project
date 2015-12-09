@@ -1,6 +1,7 @@
 #include "memory_game.h"
 #include "cordic.h"
 #include "debounce.h"
+#include "init.h"
 extern Game GameObj;
 
 calculations calc;
@@ -54,6 +55,8 @@ void update() {
 
 void startGame()
 {
+	LightLED(0x00);
+	InitGame();
 	WaitLowButton(&gPushButton);
 	WaitHighButton(&gPushButton);
 	//Change the gameState of Game struct to DisplayPattern
@@ -164,6 +167,9 @@ int checkInput()
 void winGame()
 {
 	LightLED(0x5D); //smiley face
+
+	startGame();
+
 }
 
 void loseGame()
@@ -184,6 +190,10 @@ void loseGame()
 	__delay_cycles(500000);
 	LightLED(0xFF);
 	__delay_cycles(500000);
+
+	startGame();
+
+
 }
 
 void continueGame()
