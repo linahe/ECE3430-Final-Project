@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker PC v4.4.3                      
 ******************************************************************************
->> Linked Wed Dec 09 11:23:29 2015
+>> Linked Wed Dec 09 11:29:52 2015
 
 OUTPUT FILE NAME:   <ECE3430-Final-Project.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs_noexit"  address: 0000d492
+ENTRY POINT SYMBOL: "_c_int00_noargs_noexit"  address: 0000d4a2
 
 
 MEMORY CONFIGURATION
@@ -19,7 +19,7 @@ MEMORY CONFIGURATION
   INFOC                 00001040   00000040  00000000  00000040  RWIX
   INFOB                 00001080   00000040  00000000  00000040  RWIX
   INFOA                 000010c0   00000040  00000000  00000040  RWIX
-  FLASH                 0000c000   00003fe0  000015fe  000029e2  RWIX
+  FLASH                 0000c000   00003fe0  0000160e  000029d2  RWIX
   INT00                 0000ffe0   00000002  00000002  00000000  RWIX
   INT01                 0000ffe2   00000002  00000000  00000002  RWIX
   INT02                 0000ffe4   00000002  00000002  00000000  RWIX
@@ -85,81 +85,81 @@ section   page    origin      length       input sections
                   000003b0    00000002     rts430_eabi.lib : boot.obj (.stack)
                   000003b2    0000004e     --HOLE--
 
-.text      0    0000c000    0000159a     
+.text      0    0000c000    000015aa     
                   0000c000    000002f4     rts430_eabi.lib : frcmpyd.obj (.text:__TI_frcmpyd)
                   0000c2f4    0000026e                     : mpyd.obj (.text:__mspabi_mpyd)
                   0000c562    00000162     cordic.obj (.text:calculateArcHypXY)
-                  0000c6c4    00000154     cordic.obj (.text:calculateArcHypZ)
-                  0000c818    00000146     memory_game.obj (.text:receiveUserInput)
-                  0000c95e    00000120     memory_game.obj (.text:loseGame)
-                  0000ca7e    000000c0     memory_game.obj (.text:update)
-                  0000cb3e    000000a2     debounce.obj (.text:Debouncer)
-                  0000cbe0    000000a2     rts430_eabi.lib : fltlid.obj (.text:__mspabi_fltlid)
-                  0000cc82    0000008a     led_accel.obj (.text:BlinkLEDs)
-                  0000cd0c    00000072     rts430_eabi.lib : fixdli.obj (.text:__mspabi_fixdli)
-                  0000cd7e    0000006e     adc_accel.obj (.text:Filter)
-                  0000cdec    00000064     rts430_eabi.lib : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
-                  0000ce50    0000005c                     : lsr32.obj (.text:l_lsr_const)
-                  0000ceac    0000005a     led_accel.obj (.text:DetermineDirection)
-                  0000cf06    00000058     rts430_eabi.lib : autoinit.obj (.text:_auto_init)
-                  0000cf5e    0000004e     led_accel.obj (.text:IndicateLED)
-                  0000cfac    0000004c     rts430_eabi.lib : lsr16.obj (.text)
-                  0000cff8    00000048     led_accel.obj (.text:StoreValue)
-                  0000d040    00000042     led_accel.obj (.text:StartCalibration)
-                  0000d082    00000040     led_accel.obj (.text:LightLEDsByDirection)
-                  0000d0c2    0000003e     rts430_eabi.lib : asr32.obj (.text:l_asr_const)
-                  0000d100    0000003e                     : lsl32.obj (.text:l_lsl_const)
-                  0000d13e    0000003a     init.obj (.text:InitGame)
-                  0000d178    0000003a     memory_game.obj (.text:displayPattern)
-                  0000d1b2    00000038     led_accel.obj (.text:GetNextCalibrationState)
-                  0000d1ea    00000034     led_accel.obj (.text:Send8Bits)
-                  0000d21e    00000030     adc_accel.obj (.text:ReadADC)
-                  0000d24e    0000002c     led_accel.obj (.text:CalculateZeros)
-                  0000d27a    0000002c     adc_accel.obj (.text:ComputeAverage)
-                  0000d2a6    0000002c     rts430_eabi.lib : asr16.obj (.text)
-                  0000d2d2    0000002c                     : lsl16.obj (.text)
-                  0000d2fe    00000028     init.obj (.text:InitTimerSystem)
-                  0000d326    00000026     adc_accel.obj (.text:ConfigureADC)
-                  0000d34c    00000026     init.obj (.text:InitializeVariables)
-                  0000d372    00000026     main.obj (.text:main)
-                  0000d398    00000026     rts430_eabi.lib : mult32.obj (.text)
-                  0000d3be    00000022     debounce.obj (.text:CheckDebounceTime)
-                  0000d3e0    00000022     main.obj (.text:TimerA0_routine)
-                  0000d402    00000020     init.obj (.text:InitPorts)
-                  0000d422    00000020     init.obj (.text:InitializeHardware)
-                  0000d442    0000001c     debounce.obj (.text:GetSwitch)
-                  0000d45e    0000001a     led_accel.obj (.text:WaitHighButton)
-                  0000d478    0000001a     led_accel.obj (.text:WaitLowButton)
-                  0000d492    0000001a     rts430_eabi.lib : boot_special.obj (.text:_c_int00_noargs_noexit)
-                  0000d4ac    0000001a     memory_game.obj (.text:checkInput)
-                  0000d4c6    00000016     init.obj (.text:InitLEDDisplay)
-                  0000d4dc    00000014     rts430_eabi.lib : copy_zero_init.obj (.text:decompress:ZI:__TI_zero_init)
-                  0000d4f0    00000012                     : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
-                  0000d502    00000012                     : lsr32.obj (.text:l_lsr)
-                  0000d514    00000012                     : memcpy.obj (.text:memcpy)
-                  0000d526    00000012     memory_game.obj (.text:startGame)
-                  0000d538    00000010     rts430_eabi.lib : asr32.obj (.text:l_asr)
-                  0000d548    00000010                     : epilog.obj (.text)
-                  0000d558    0000000e     led_accel.obj (.text:LightLED)
-                  0000d566    0000000e     main.obj (.text:TimerA1_routine)
-                  0000d574    0000000a     memory_game.obj (.text:winGame)
-                  0000d57e    00000008     init.obj (.text:InitLEDState)
-                  0000d586    00000006     rts430_eabi.lib : isr_trap.obj (.text:_isr:__TI_ISR_TRAP)
-                  0000d58c    00000006                     : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
-                  0000d592    00000004                     : pre_init.obj (.text:_system_pre_init)
-                  0000d596    00000004                     : exit.obj (.text:abort)
+                  0000c6c4    00000156     memory_game.obj (.text:receiveUserInput)
+                  0000c81a    00000154     cordic.obj (.text:calculateArcHypZ)
+                  0000c96e    00000120     memory_game.obj (.text:loseGame)
+                  0000ca8e    000000c0     memory_game.obj (.text:update)
+                  0000cb4e    000000a2     debounce.obj (.text:Debouncer)
+                  0000cbf0    000000a2     rts430_eabi.lib : fltlid.obj (.text:__mspabi_fltlid)
+                  0000cc92    0000008a     led_accel.obj (.text:BlinkLEDs)
+                  0000cd1c    00000072     rts430_eabi.lib : fixdli.obj (.text:__mspabi_fixdli)
+                  0000cd8e    0000006e     adc_accel.obj (.text:Filter)
+                  0000cdfc    00000064     rts430_eabi.lib : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
+                  0000ce60    0000005c                     : lsr32.obj (.text:l_lsr_const)
+                  0000cebc    0000005a     led_accel.obj (.text:DetermineDirection)
+                  0000cf16    00000058     rts430_eabi.lib : autoinit.obj (.text:_auto_init)
+                  0000cf6e    0000004e     led_accel.obj (.text:IndicateLED)
+                  0000cfbc    0000004c     rts430_eabi.lib : lsr16.obj (.text)
+                  0000d008    00000048     led_accel.obj (.text:StoreValue)
+                  0000d050    00000042     led_accel.obj (.text:StartCalibration)
+                  0000d092    00000040     led_accel.obj (.text:LightLEDsByDirection)
+                  0000d0d2    0000003e     rts430_eabi.lib : asr32.obj (.text:l_asr_const)
+                  0000d110    0000003e                     : lsl32.obj (.text:l_lsl_const)
+                  0000d14e    0000003a     init.obj (.text:InitGame)
+                  0000d188    0000003a     memory_game.obj (.text:displayPattern)
+                  0000d1c2    00000038     led_accel.obj (.text:GetNextCalibrationState)
+                  0000d1fa    00000034     led_accel.obj (.text:Send8Bits)
+                  0000d22e    00000030     adc_accel.obj (.text:ReadADC)
+                  0000d25e    0000002c     led_accel.obj (.text:CalculateZeros)
+                  0000d28a    0000002c     adc_accel.obj (.text:ComputeAverage)
+                  0000d2b6    0000002c     rts430_eabi.lib : asr16.obj (.text)
+                  0000d2e2    0000002c                     : lsl16.obj (.text)
+                  0000d30e    00000028     init.obj (.text:InitTimerSystem)
+                  0000d336    00000026     adc_accel.obj (.text:ConfigureADC)
+                  0000d35c    00000026     init.obj (.text:InitializeVariables)
+                  0000d382    00000026     main.obj (.text:main)
+                  0000d3a8    00000026     rts430_eabi.lib : mult32.obj (.text)
+                  0000d3ce    00000022     debounce.obj (.text:CheckDebounceTime)
+                  0000d3f0    00000022     main.obj (.text:TimerA0_routine)
+                  0000d412    00000020     init.obj (.text:InitPorts)
+                  0000d432    00000020     init.obj (.text:InitializeHardware)
+                  0000d452    0000001c     debounce.obj (.text:GetSwitch)
+                  0000d46e    0000001a     led_accel.obj (.text:WaitHighButton)
+                  0000d488    0000001a     led_accel.obj (.text:WaitLowButton)
+                  0000d4a2    0000001a     rts430_eabi.lib : boot_special.obj (.text:_c_int00_noargs_noexit)
+                  0000d4bc    0000001a     memory_game.obj (.text:checkInput)
+                  0000d4d6    00000016     init.obj (.text:InitLEDDisplay)
+                  0000d4ec    00000014     rts430_eabi.lib : copy_zero_init.obj (.text:decompress:ZI:__TI_zero_init)
+                  0000d500    00000012                     : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
+                  0000d512    00000012                     : lsr32.obj (.text:l_lsr)
+                  0000d524    00000012                     : memcpy.obj (.text:memcpy)
+                  0000d536    00000012     memory_game.obj (.text:startGame)
+                  0000d548    00000010     rts430_eabi.lib : asr32.obj (.text:l_asr)
+                  0000d558    00000010                     : epilog.obj (.text)
+                  0000d568    0000000e     led_accel.obj (.text:LightLED)
+                  0000d576    0000000e     main.obj (.text:TimerA1_routine)
+                  0000d584    0000000a     memory_game.obj (.text:winGame)
+                  0000d58e    00000008     init.obj (.text:InitLEDState)
+                  0000d596    00000006     rts430_eabi.lib : isr_trap.obj (.text:_isr:__TI_ISR_TRAP)
+                  0000d59c    00000006                     : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
+                  0000d5a2    00000004                     : pre_init.obj (.text:_system_pre_init)
+                  0000d5a6    00000004                     : exit.obj (.text:abort)
 
-.const     0    0000d59a    00000048     
-                  0000d59a    00000020     cordic.obj (.const:table)
-                  0000d5ba    00000014     init.obj (.const:testPattern)
-                  0000d5ce    00000014     init.obj (.const:userInitialPattern)
+.const     0    0000d5aa    00000048     
+                  0000d5aa    00000020     cordic.obj (.const:table)
+                  0000d5ca    00000014     init.obj (.const:testPattern)
+                  0000d5de    00000014     init.obj (.const:userInitialPattern)
 
-.cinit     0    0000d5e2    0000001c     
-                  0000d5e2    00000009     (.cinit..data.load) [load image, compression = rle]
-                  0000d5eb    00000001     --HOLE-- [fill = 0]
-                  0000d5ec    00000006     (__TI_handler_table)
-                  0000d5f2    00000004     (.cinit..bss.load) [load image, compression = zero_init]
-                  0000d5f6    00000008     (__TI_cinit_table)
+.cinit     0    0000d5f2    0000001c     
+                  0000d5f2    00000009     (.cinit..data.load) [load image, compression = rle]
+                  0000d5fb    00000001     --HOLE-- [fill = 0]
+                  0000d5fc    00000006     (__TI_handler_table)
+                  0000d602    00000004     (.cinit..bss.load) [load image, compression = zero_init]
+                  0000d606    00000008     (__TI_cinit_table)
 
 .init_array 
 *          0    0000c000    00000000     UNINITIALIZED
@@ -216,14 +216,14 @@ NMI        0    0000fffc    00000002
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 0000d5f6 records: 2, size/record: 4, table size: 8
-	.data: load addr=0000d5e2, load size=00000009 bytes, run addr=000002b0, run size=0000000c bytes, compression=rle
-	.bss: load addr=0000d5f2, load size=00000004 bytes, run addr=00000200, run size=000000b0 bytes, compression=zero_init
+__TI_cinit_table @ 0000d606 records: 2, size/record: 4, table size: 8
+	.data: load addr=0000d5f2, load size=00000009 bytes, run addr=000002b0, run size=0000000c bytes, compression=rle
+	.bss: load addr=0000d602, load size=00000004 bytes, run addr=00000200, run size=000000b0 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 0000d5ec records: 3, size/record: 2, table size: 6
+__TI_handler_table @ 0000d5fc records: 3, size/record: 2, table size: 6
 	index: 0, handler: __TI_zero_init
 	index: 1, handler: __TI_decompress_rle24
 	index: 2, handler: __TI_decompress_none
@@ -243,8 +243,8 @@ address   name
 00000057  BCSCTL1                 
 00000058  BCSCTL2                 
 00000053  BCSCTL3                 
-0000cc82  BlinkLEDs               
-0000d596  C$$EXIT                 
+0000cc92  BlinkLEDs               
+0000d5a6  C$$EXIT                 
 00000059  CACTL1                  
 0000005a  CACTL2                  
 000010fb  CALBC1_12MHZ            
@@ -256,35 +256,35 @@ address   name
 000010fe  CALDCO_1MHZ             
 000010fc  CALDCO_8MHZ             
 0000005b  CAPD                    
-0000d24e  CalculateZeros          
-0000d3be  CheckDebounceTime       
-0000d27a  ComputeAverage          
-0000d326  ConfigureADC            
+0000d25e  CalculateZeros          
+0000d3ce  CheckDebounceTime       
+0000d28a  ComputeAverage          
+0000d336  ConfigureADC            
 00000056  DCOCTL                  
-0000cb3e  Debouncer               
-0000ceac  DetermineDirection      
+0000cb4e  Debouncer               
+0000cebc  DetermineDirection      
 00000128  FCTL1                   
 0000012a  FCTL2                   
 0000012c  FCTL3                   
-0000cd7e  Filter                  
+0000cd8e  Filter                  
 00000200  GameObj                 
-0000d1b2  GetNextCalibrationState 
-0000d442  GetSwitch               
+0000d1c2  GetNextCalibrationState 
+0000d452  GetSwitch               
 00000000  IE1                     
 00000001  IE2                     
 00000002  IFG1                    
 00000003  IFG2                    
-0000cf5e  IndicateLED             
-0000d13e  InitGame                
-0000d4c6  InitLEDDisplay          
-0000d57e  InitLEDState            
-0000d402  InitPorts               
-0000d2fe  InitTimerSystem         
-0000d422  InitializeHardware      
-0000d34c  InitializeVariables     
+0000cf6e  IndicateLED             
+0000d14e  InitGame                
+0000d4d6  InitLEDDisplay          
+0000d58e  InitLEDState            
+0000d412  InitPorts               
+0000d30e  InitTimerSystem         
+0000d432  InitializeHardware      
+0000d35c  InitializeVariables     
 00000282  LEDDir                  
-0000d558  LightLED                
-0000d082  LightLEDsByDirection    
+0000d568  LightLED                
+0000d092  LightLEDsByDirection    
 00000022  P1DIR                   
 00000025  P1IE                    
 00000024  P1IES                   
@@ -309,10 +309,10 @@ address   name
 00000010  P3REN                   
 0000001b  P3SEL                   
 00000043  P3SEL2                  
-0000d21e  ReadADC                 
-0000d1ea  Send8Bits               
-0000d040  StartCalibration        
-0000cff8  StoreValue              
+0000d22e  ReadADC                 
+0000d1fa  Send8Bits               
+0000d050  StartCalibration        
+0000d008  StoreValue              
 00000172  TA0CCR0                 
 00000174  TA0CCR1                 
 00000176  TA0CCR2                 
@@ -337,8 +337,8 @@ address   name
 000010f7  TLV_DCO_30_LEN          
 000010f6  TLV_DCO_30_TAG          
 00000284  TimeStamp               
-0000d3e0  TimerA0_routine         
-0000d566  TimerA1_routine         
+0000d3f0  TimerA0_routine         
+0000d576  TimerA1_routine         
 0000005d  UCA0ABCTL               
 00000062  UCA0BR0                 
 00000063  UCA0BR1                 
@@ -361,8 +361,8 @@ address   name
 0000006d  UCB0STAT                
 0000006f  UCB0TXBUF               
 00000120  WDTCTL                  
-0000d45e  WaitHighButton          
-0000d478  WaitLowButton           
+0000d46e  WaitHighButton          
+0000d488  WaitLowButton           
 00000286  X0                      
 00000288  XAvg                    
 00000244  XBuffer                 
@@ -386,15 +386,15 @@ address   name
 000002ba  Z_Axis                  
 00000400  __STACK_END             
 00000050  __STACK_SIZE            
-0000d5f6  __TI_CINIT_Base         
-0000d5fe  __TI_CINIT_Limit        
-0000d5ec  __TI_Handler_Table_Base 
-0000d5f2  __TI_Handler_Table_Limit
+0000d606  __TI_CINIT_Base         
+0000d60e  __TI_CINIT_Limit        
+0000d5fc  __TI_Handler_Table_Base 
+0000d602  __TI_Handler_Table_Limit
 UNDEFED   __TI_INITARRAY_Base     
 UNDEFED   __TI_INITARRAY_Limit    
-0000d586  __TI_ISR_TRAP           
-0000d4f0  __TI_decompress_none    
-0000d58c  __TI_decompress_rle24   
+0000d596  __TI_ISR_TRAP           
+0000d500  __TI_decompress_none    
+0000d59c  __TI_decompress_rle24   
 0000c000  __TI_frcmpyd            
 0000ffe0  __TI_int00              
 0000ffe4  __TI_int02              
@@ -409,146 +409,146 @@ UNDEFED   __TI_INITARRAY_Limit
 0000fff8  __TI_int12              
 0000fffa  __TI_int13              
 0000fffc  __TI_int14              
-0000d4dc  __TI_zero_init          
+0000d4ec  __TI_zero_init          
 ffffffff  __binit__               
 ffffffff  __c_args__              
-0000cd0c  __mspabi_fixdli         
-0000cbe0  __mspabi_fltlid         
-0000d554  __mspabi_func_epilog_1  
-0000d552  __mspabi_func_epilog_2  
-0000d550  __mspabi_func_epilog_3  
-0000d54e  __mspabi_func_epilog_4  
-0000d54c  __mspabi_func_epilog_5  
-0000d54a  __mspabi_func_epilog_6  
-0000d548  __mspabi_func_epilog_7  
+0000cd1c  __mspabi_fixdli         
+0000cbf0  __mspabi_fltlid         
+0000d564  __mspabi_func_epilog_1  
+0000d562  __mspabi_func_epilog_2  
+0000d560  __mspabi_func_epilog_3  
+0000d55e  __mspabi_func_epilog_4  
+0000d55c  __mspabi_func_epilog_5  
+0000d55a  __mspabi_func_epilog_6  
+0000d558  __mspabi_func_epilog_7  
 0000c2f4  __mspabi_mpyd           
-0000d398  __mspabi_mpyl           
-0000d398  __mspabi_mpyl_sw        
-0000d2d2  __mspabi_slli           
-0000d2fa  __mspabi_slli_1         
-0000d2e8  __mspabi_slli_10        
-0000d2e6  __mspabi_slli_11        
-0000d2e4  __mspabi_slli_12        
-0000d2e2  __mspabi_slli_13        
-0000d2e0  __mspabi_slli_14        
-0000d2de  __mspabi_slli_15        
-0000d2f8  __mspabi_slli_2         
-0000d2f6  __mspabi_slli_3         
-0000d2f4  __mspabi_slli_4         
-0000d2f2  __mspabi_slli_5         
-0000d2f0  __mspabi_slli_6         
-0000d2ee  __mspabi_slli_7         
-0000d2ec  __mspabi_slli_8         
-0000d2ea  __mspabi_slli_9         
-0000d138  __mspabi_slll_1         
-0000d114  __mspabi_slll_10        
-0000d110  __mspabi_slll_11        
-0000d10c  __mspabi_slll_12        
-0000d108  __mspabi_slll_13        
-0000d104  __mspabi_slll_14        
-0000d100  __mspabi_slll_15        
-0000d134  __mspabi_slll_2         
-0000d130  __mspabi_slll_3         
-0000d12c  __mspabi_slll_4         
-0000d128  __mspabi_slll_5         
-0000d124  __mspabi_slll_6         
-0000d120  __mspabi_slll_7         
-0000d11c  __mspabi_slll_8         
-0000d118  __mspabi_slll_9         
-0000d2a6  __mspabi_srai           
-0000d2ce  __mspabi_srai_1         
-0000d2bc  __mspabi_srai_10        
-0000d2ba  __mspabi_srai_11        
-0000d2b8  __mspabi_srai_12        
-0000d2b6  __mspabi_srai_13        
-0000d2b4  __mspabi_srai_14        
-0000d2b2  __mspabi_srai_15        
-0000d2cc  __mspabi_srai_2         
-0000d2ca  __mspabi_srai_3         
-0000d2c8  __mspabi_srai_4         
-0000d2c6  __mspabi_srai_5         
-0000d2c4  __mspabi_srai_6         
-0000d2c2  __mspabi_srai_7         
-0000d2c0  __mspabi_srai_8         
-0000d2be  __mspabi_srai_9         
-0000d538  __mspabi_sral           
-0000d0fa  __mspabi_sral_1         
-0000d0d6  __mspabi_sral_10        
-0000d0d2  __mspabi_sral_11        
-0000d0ce  __mspabi_sral_12        
-0000d0ca  __mspabi_sral_13        
-0000d0c6  __mspabi_sral_14        
-0000d0c2  __mspabi_sral_15        
-0000d0f6  __mspabi_sral_2         
-0000d0f2  __mspabi_sral_3         
-0000d0ee  __mspabi_sral_4         
-0000d0ea  __mspabi_sral_5         
-0000d0e6  __mspabi_sral_6         
-0000d0e2  __mspabi_sral_7         
-0000d0de  __mspabi_sral_8         
-0000d0da  __mspabi_sral_9         
-0000cfac  __mspabi_srli           
-0000cff2  __mspabi_srli_1         
-0000cfce  __mspabi_srli_10        
-0000cfca  __mspabi_srli_11        
-0000cfc6  __mspabi_srli_12        
-0000cfc2  __mspabi_srli_13        
-0000cfbe  __mspabi_srli_14        
-0000cfba  __mspabi_srli_15        
-0000cfee  __mspabi_srli_2         
-0000cfea  __mspabi_srli_3         
-0000cfe6  __mspabi_srli_4         
-0000cfe2  __mspabi_srli_5         
-0000cfde  __mspabi_srli_6         
-0000cfda  __mspabi_srli_7         
-0000cfd6  __mspabi_srli_8         
-0000cfd2  __mspabi_srli_9         
-0000d502  __mspabi_srll           
-0000cea4  __mspabi_srll_1         
-0000ce6e  __mspabi_srll_10        
-0000ce68  __mspabi_srll_11        
-0000ce62  __mspabi_srll_12        
-0000ce5c  __mspabi_srll_13        
-0000ce56  __mspabi_srll_14        
-0000ce50  __mspabi_srll_15        
-0000ce9e  __mspabi_srll_2         
-0000ce98  __mspabi_srll_3         
-0000ce92  __mspabi_srll_4         
-0000ce8c  __mspabi_srll_5         
-0000ce86  __mspabi_srll_6         
-0000ce80  __mspabi_srll_7         
-0000ce7a  __mspabi_srll_8         
-0000ce74  __mspabi_srll_9         
-0000cf06  _auto_init              
-0000d492  _c_int00_noargs_noexit  
+0000d3a8  __mspabi_mpyl           
+0000d3a8  __mspabi_mpyl_sw        
+0000d2e2  __mspabi_slli           
+0000d30a  __mspabi_slli_1         
+0000d2f8  __mspabi_slli_10        
+0000d2f6  __mspabi_slli_11        
+0000d2f4  __mspabi_slli_12        
+0000d2f2  __mspabi_slli_13        
+0000d2f0  __mspabi_slli_14        
+0000d2ee  __mspabi_slli_15        
+0000d308  __mspabi_slli_2         
+0000d306  __mspabi_slli_3         
+0000d304  __mspabi_slli_4         
+0000d302  __mspabi_slli_5         
+0000d300  __mspabi_slli_6         
+0000d2fe  __mspabi_slli_7         
+0000d2fc  __mspabi_slli_8         
+0000d2fa  __mspabi_slli_9         
+0000d148  __mspabi_slll_1         
+0000d124  __mspabi_slll_10        
+0000d120  __mspabi_slll_11        
+0000d11c  __mspabi_slll_12        
+0000d118  __mspabi_slll_13        
+0000d114  __mspabi_slll_14        
+0000d110  __mspabi_slll_15        
+0000d144  __mspabi_slll_2         
+0000d140  __mspabi_slll_3         
+0000d13c  __mspabi_slll_4         
+0000d138  __mspabi_slll_5         
+0000d134  __mspabi_slll_6         
+0000d130  __mspabi_slll_7         
+0000d12c  __mspabi_slll_8         
+0000d128  __mspabi_slll_9         
+0000d2b6  __mspabi_srai           
+0000d2de  __mspabi_srai_1         
+0000d2cc  __mspabi_srai_10        
+0000d2ca  __mspabi_srai_11        
+0000d2c8  __mspabi_srai_12        
+0000d2c6  __mspabi_srai_13        
+0000d2c4  __mspabi_srai_14        
+0000d2c2  __mspabi_srai_15        
+0000d2dc  __mspabi_srai_2         
+0000d2da  __mspabi_srai_3         
+0000d2d8  __mspabi_srai_4         
+0000d2d6  __mspabi_srai_5         
+0000d2d4  __mspabi_srai_6         
+0000d2d2  __mspabi_srai_7         
+0000d2d0  __mspabi_srai_8         
+0000d2ce  __mspabi_srai_9         
+0000d548  __mspabi_sral           
+0000d10a  __mspabi_sral_1         
+0000d0e6  __mspabi_sral_10        
+0000d0e2  __mspabi_sral_11        
+0000d0de  __mspabi_sral_12        
+0000d0da  __mspabi_sral_13        
+0000d0d6  __mspabi_sral_14        
+0000d0d2  __mspabi_sral_15        
+0000d106  __mspabi_sral_2         
+0000d102  __mspabi_sral_3         
+0000d0fe  __mspabi_sral_4         
+0000d0fa  __mspabi_sral_5         
+0000d0f6  __mspabi_sral_6         
+0000d0f2  __mspabi_sral_7         
+0000d0ee  __mspabi_sral_8         
+0000d0ea  __mspabi_sral_9         
+0000cfbc  __mspabi_srli           
+0000d002  __mspabi_srli_1         
+0000cfde  __mspabi_srli_10        
+0000cfda  __mspabi_srli_11        
+0000cfd6  __mspabi_srli_12        
+0000cfd2  __mspabi_srli_13        
+0000cfce  __mspabi_srli_14        
+0000cfca  __mspabi_srli_15        
+0000cffe  __mspabi_srli_2         
+0000cffa  __mspabi_srli_3         
+0000cff6  __mspabi_srli_4         
+0000cff2  __mspabi_srli_5         
+0000cfee  __mspabi_srli_6         
+0000cfea  __mspabi_srli_7         
+0000cfe6  __mspabi_srli_8         
+0000cfe2  __mspabi_srli_9         
+0000d512  __mspabi_srll           
+0000ceb4  __mspabi_srll_1         
+0000ce7e  __mspabi_srll_10        
+0000ce78  __mspabi_srll_11        
+0000ce72  __mspabi_srll_12        
+0000ce6c  __mspabi_srll_13        
+0000ce66  __mspabi_srll_14        
+0000ce60  __mspabi_srll_15        
+0000ceae  __mspabi_srll_2         
+0000cea8  __mspabi_srll_3         
+0000cea2  __mspabi_srll_4         
+0000ce9c  __mspabi_srll_5         
+0000ce96  __mspabi_srll_6         
+0000ce90  __mspabi_srll_7         
+0000ce8a  __mspabi_srll_8         
+0000ce84  __mspabi_srll_9         
+0000cf16  _auto_init              
+0000d4a2  _c_int00_noargs_noexit  
 0000fffe  _reset_vector           
 000003b0  _stack                  
-0000d592  _system_pre_init        
-0000d596  abort                   
+0000d5a2  _system_pre_init        
+0000d5a6  abort                   
 000002b0  adc                     
 ffffffff  binit                   
 00000230  calc                    
 0000c562  calculateArcHypXY       
-0000c6c4  calculateArcHypZ        
-0000d4ac  checkInput              
-0000d178  displayPattern          
+0000c81a  calculateArcHypZ        
+0000d4bc  checkInput              
+0000d188  displayPattern          
 000002a4  g1mSTimer               
 000002a6  gButtonPresses          
 00000274  gPushButton             
 000002a8  index                   
-0000c95e  loseGame                
-0000d372  main                    
-0000d514  memcpy                  
+0000c96e  loseGame                
+0000d382  main                    
+0000d524  memcpy                  
 000002aa  myCalibrationState      
 000002ac  phi                     
-0000c818  receiveUserInput        
-0000d526  startGame               
-0000d59a  table                   
-0000d5ba  testPattern             
+0000c6c4  receiveUserInput        
+0000d536  startGame               
+0000d5aa  table                   
+0000d5ca  testPattern             
 000002ae  theta                   
-0000ca7e  update                  
-0000d5ce  userInitialPattern      
-0000d574  winGame                 
+0000ca8e  update                  
+0000d5de  userInitialPattern      
+0000d584  winGame                 
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -692,166 +692,166 @@ address   name
 0000c000  __TI_frcmpyd            
 0000c2f4  __mspabi_mpyd           
 0000c562  calculateArcHypXY       
-0000c6c4  calculateArcHypZ        
-0000c818  receiveUserInput        
-0000c95e  loseGame                
-0000ca7e  update                  
-0000cb3e  Debouncer               
-0000cbe0  __mspabi_fltlid         
-0000cc82  BlinkLEDs               
-0000cd0c  __mspabi_fixdli         
-0000cd7e  Filter                  
-0000ce50  __mspabi_srll_15        
-0000ce56  __mspabi_srll_14        
-0000ce5c  __mspabi_srll_13        
-0000ce62  __mspabi_srll_12        
-0000ce68  __mspabi_srll_11        
-0000ce6e  __mspabi_srll_10        
-0000ce74  __mspabi_srll_9         
-0000ce7a  __mspabi_srll_8         
-0000ce80  __mspabi_srll_7         
-0000ce86  __mspabi_srll_6         
-0000ce8c  __mspabi_srll_5         
-0000ce92  __mspabi_srll_4         
-0000ce98  __mspabi_srll_3         
-0000ce9e  __mspabi_srll_2         
-0000cea4  __mspabi_srll_1         
-0000ceac  DetermineDirection      
-0000cf06  _auto_init              
-0000cf5e  IndicateLED             
-0000cfac  __mspabi_srli           
-0000cfba  __mspabi_srli_15        
-0000cfbe  __mspabi_srli_14        
-0000cfc2  __mspabi_srli_13        
-0000cfc6  __mspabi_srli_12        
-0000cfca  __mspabi_srli_11        
-0000cfce  __mspabi_srli_10        
-0000cfd2  __mspabi_srli_9         
-0000cfd6  __mspabi_srli_8         
-0000cfda  __mspabi_srli_7         
-0000cfde  __mspabi_srli_6         
-0000cfe2  __mspabi_srli_5         
-0000cfe6  __mspabi_srli_4         
-0000cfea  __mspabi_srli_3         
-0000cfee  __mspabi_srli_2         
-0000cff2  __mspabi_srli_1         
-0000cff8  StoreValue              
-0000d040  StartCalibration        
-0000d082  LightLEDsByDirection    
-0000d0c2  __mspabi_sral_15        
-0000d0c6  __mspabi_sral_14        
-0000d0ca  __mspabi_sral_13        
-0000d0ce  __mspabi_sral_12        
-0000d0d2  __mspabi_sral_11        
-0000d0d6  __mspabi_sral_10        
-0000d0da  __mspabi_sral_9         
-0000d0de  __mspabi_sral_8         
-0000d0e2  __mspabi_sral_7         
-0000d0e6  __mspabi_sral_6         
-0000d0ea  __mspabi_sral_5         
-0000d0ee  __mspabi_sral_4         
-0000d0f2  __mspabi_sral_3         
-0000d0f6  __mspabi_sral_2         
-0000d0fa  __mspabi_sral_1         
-0000d100  __mspabi_slll_15        
-0000d104  __mspabi_slll_14        
-0000d108  __mspabi_slll_13        
-0000d10c  __mspabi_slll_12        
-0000d110  __mspabi_slll_11        
-0000d114  __mspabi_slll_10        
-0000d118  __mspabi_slll_9         
-0000d11c  __mspabi_slll_8         
-0000d120  __mspabi_slll_7         
-0000d124  __mspabi_slll_6         
-0000d128  __mspabi_slll_5         
-0000d12c  __mspabi_slll_4         
-0000d130  __mspabi_slll_3         
-0000d134  __mspabi_slll_2         
-0000d138  __mspabi_slll_1         
-0000d13e  InitGame                
-0000d178  displayPattern          
-0000d1b2  GetNextCalibrationState 
-0000d1ea  Send8Bits               
-0000d21e  ReadADC                 
-0000d24e  CalculateZeros          
-0000d27a  ComputeAverage          
-0000d2a6  __mspabi_srai           
-0000d2b2  __mspabi_srai_15        
-0000d2b4  __mspabi_srai_14        
-0000d2b6  __mspabi_srai_13        
-0000d2b8  __mspabi_srai_12        
-0000d2ba  __mspabi_srai_11        
-0000d2bc  __mspabi_srai_10        
-0000d2be  __mspabi_srai_9         
-0000d2c0  __mspabi_srai_8         
-0000d2c2  __mspabi_srai_7         
-0000d2c4  __mspabi_srai_6         
-0000d2c6  __mspabi_srai_5         
-0000d2c8  __mspabi_srai_4         
-0000d2ca  __mspabi_srai_3         
-0000d2cc  __mspabi_srai_2         
-0000d2ce  __mspabi_srai_1         
-0000d2d2  __mspabi_slli           
-0000d2de  __mspabi_slli_15        
-0000d2e0  __mspabi_slli_14        
-0000d2e2  __mspabi_slli_13        
-0000d2e4  __mspabi_slli_12        
-0000d2e6  __mspabi_slli_11        
-0000d2e8  __mspabi_slli_10        
-0000d2ea  __mspabi_slli_9         
-0000d2ec  __mspabi_slli_8         
-0000d2ee  __mspabi_slli_7         
-0000d2f0  __mspabi_slli_6         
-0000d2f2  __mspabi_slli_5         
-0000d2f4  __mspabi_slli_4         
-0000d2f6  __mspabi_slli_3         
-0000d2f8  __mspabi_slli_2         
-0000d2fa  __mspabi_slli_1         
-0000d2fe  InitTimerSystem         
-0000d326  ConfigureADC            
-0000d34c  InitializeVariables     
-0000d372  main                    
-0000d398  __mspabi_mpyl           
-0000d398  __mspabi_mpyl_sw        
-0000d3be  CheckDebounceTime       
-0000d3e0  TimerA0_routine         
-0000d402  InitPorts               
-0000d422  InitializeHardware      
-0000d442  GetSwitch               
-0000d45e  WaitHighButton          
-0000d478  WaitLowButton           
-0000d492  _c_int00_noargs_noexit  
-0000d4ac  checkInput              
-0000d4c6  InitLEDDisplay          
-0000d4dc  __TI_zero_init          
-0000d4f0  __TI_decompress_none    
-0000d502  __mspabi_srll           
-0000d514  memcpy                  
-0000d526  startGame               
-0000d538  __mspabi_sral           
-0000d548  __mspabi_func_epilog_7  
-0000d54a  __mspabi_func_epilog_6  
-0000d54c  __mspabi_func_epilog_5  
-0000d54e  __mspabi_func_epilog_4  
-0000d550  __mspabi_func_epilog_3  
-0000d552  __mspabi_func_epilog_2  
-0000d554  __mspabi_func_epilog_1  
-0000d558  LightLED                
-0000d566  TimerA1_routine         
-0000d574  winGame                 
-0000d57e  InitLEDState            
-0000d586  __TI_ISR_TRAP           
-0000d58c  __TI_decompress_rle24   
-0000d592  _system_pre_init        
-0000d596  C$$EXIT                 
-0000d596  abort                   
-0000d59a  table                   
-0000d5ba  testPattern             
-0000d5ce  userInitialPattern      
-0000d5ec  __TI_Handler_Table_Base 
-0000d5f2  __TI_Handler_Table_Limit
-0000d5f6  __TI_CINIT_Base         
-0000d5fe  __TI_CINIT_Limit        
+0000c6c4  receiveUserInput        
+0000c81a  calculateArcHypZ        
+0000c96e  loseGame                
+0000ca8e  update                  
+0000cb4e  Debouncer               
+0000cbf0  __mspabi_fltlid         
+0000cc92  BlinkLEDs               
+0000cd1c  __mspabi_fixdli         
+0000cd8e  Filter                  
+0000ce60  __mspabi_srll_15        
+0000ce66  __mspabi_srll_14        
+0000ce6c  __mspabi_srll_13        
+0000ce72  __mspabi_srll_12        
+0000ce78  __mspabi_srll_11        
+0000ce7e  __mspabi_srll_10        
+0000ce84  __mspabi_srll_9         
+0000ce8a  __mspabi_srll_8         
+0000ce90  __mspabi_srll_7         
+0000ce96  __mspabi_srll_6         
+0000ce9c  __mspabi_srll_5         
+0000cea2  __mspabi_srll_4         
+0000cea8  __mspabi_srll_3         
+0000ceae  __mspabi_srll_2         
+0000ceb4  __mspabi_srll_1         
+0000cebc  DetermineDirection      
+0000cf16  _auto_init              
+0000cf6e  IndicateLED             
+0000cfbc  __mspabi_srli           
+0000cfca  __mspabi_srli_15        
+0000cfce  __mspabi_srli_14        
+0000cfd2  __mspabi_srli_13        
+0000cfd6  __mspabi_srli_12        
+0000cfda  __mspabi_srli_11        
+0000cfde  __mspabi_srli_10        
+0000cfe2  __mspabi_srli_9         
+0000cfe6  __mspabi_srli_8         
+0000cfea  __mspabi_srli_7         
+0000cfee  __mspabi_srli_6         
+0000cff2  __mspabi_srli_5         
+0000cff6  __mspabi_srli_4         
+0000cffa  __mspabi_srli_3         
+0000cffe  __mspabi_srli_2         
+0000d002  __mspabi_srli_1         
+0000d008  StoreValue              
+0000d050  StartCalibration        
+0000d092  LightLEDsByDirection    
+0000d0d2  __mspabi_sral_15        
+0000d0d6  __mspabi_sral_14        
+0000d0da  __mspabi_sral_13        
+0000d0de  __mspabi_sral_12        
+0000d0e2  __mspabi_sral_11        
+0000d0e6  __mspabi_sral_10        
+0000d0ea  __mspabi_sral_9         
+0000d0ee  __mspabi_sral_8         
+0000d0f2  __mspabi_sral_7         
+0000d0f6  __mspabi_sral_6         
+0000d0fa  __mspabi_sral_5         
+0000d0fe  __mspabi_sral_4         
+0000d102  __mspabi_sral_3         
+0000d106  __mspabi_sral_2         
+0000d10a  __mspabi_sral_1         
+0000d110  __mspabi_slll_15        
+0000d114  __mspabi_slll_14        
+0000d118  __mspabi_slll_13        
+0000d11c  __mspabi_slll_12        
+0000d120  __mspabi_slll_11        
+0000d124  __mspabi_slll_10        
+0000d128  __mspabi_slll_9         
+0000d12c  __mspabi_slll_8         
+0000d130  __mspabi_slll_7         
+0000d134  __mspabi_slll_6         
+0000d138  __mspabi_slll_5         
+0000d13c  __mspabi_slll_4         
+0000d140  __mspabi_slll_3         
+0000d144  __mspabi_slll_2         
+0000d148  __mspabi_slll_1         
+0000d14e  InitGame                
+0000d188  displayPattern          
+0000d1c2  GetNextCalibrationState 
+0000d1fa  Send8Bits               
+0000d22e  ReadADC                 
+0000d25e  CalculateZeros          
+0000d28a  ComputeAverage          
+0000d2b6  __mspabi_srai           
+0000d2c2  __mspabi_srai_15        
+0000d2c4  __mspabi_srai_14        
+0000d2c6  __mspabi_srai_13        
+0000d2c8  __mspabi_srai_12        
+0000d2ca  __mspabi_srai_11        
+0000d2cc  __mspabi_srai_10        
+0000d2ce  __mspabi_srai_9         
+0000d2d0  __mspabi_srai_8         
+0000d2d2  __mspabi_srai_7         
+0000d2d4  __mspabi_srai_6         
+0000d2d6  __mspabi_srai_5         
+0000d2d8  __mspabi_srai_4         
+0000d2da  __mspabi_srai_3         
+0000d2dc  __mspabi_srai_2         
+0000d2de  __mspabi_srai_1         
+0000d2e2  __mspabi_slli           
+0000d2ee  __mspabi_slli_15        
+0000d2f0  __mspabi_slli_14        
+0000d2f2  __mspabi_slli_13        
+0000d2f4  __mspabi_slli_12        
+0000d2f6  __mspabi_slli_11        
+0000d2f8  __mspabi_slli_10        
+0000d2fa  __mspabi_slli_9         
+0000d2fc  __mspabi_slli_8         
+0000d2fe  __mspabi_slli_7         
+0000d300  __mspabi_slli_6         
+0000d302  __mspabi_slli_5         
+0000d304  __mspabi_slli_4         
+0000d306  __mspabi_slli_3         
+0000d308  __mspabi_slli_2         
+0000d30a  __mspabi_slli_1         
+0000d30e  InitTimerSystem         
+0000d336  ConfigureADC            
+0000d35c  InitializeVariables     
+0000d382  main                    
+0000d3a8  __mspabi_mpyl           
+0000d3a8  __mspabi_mpyl_sw        
+0000d3ce  CheckDebounceTime       
+0000d3f0  TimerA0_routine         
+0000d412  InitPorts               
+0000d432  InitializeHardware      
+0000d452  GetSwitch               
+0000d46e  WaitHighButton          
+0000d488  WaitLowButton           
+0000d4a2  _c_int00_noargs_noexit  
+0000d4bc  checkInput              
+0000d4d6  InitLEDDisplay          
+0000d4ec  __TI_zero_init          
+0000d500  __TI_decompress_none    
+0000d512  __mspabi_srll           
+0000d524  memcpy                  
+0000d536  startGame               
+0000d548  __mspabi_sral           
+0000d558  __mspabi_func_epilog_7  
+0000d55a  __mspabi_func_epilog_6  
+0000d55c  __mspabi_func_epilog_5  
+0000d55e  __mspabi_func_epilog_4  
+0000d560  __mspabi_func_epilog_3  
+0000d562  __mspabi_func_epilog_2  
+0000d564  __mspabi_func_epilog_1  
+0000d568  LightLED                
+0000d576  TimerA1_routine         
+0000d584  winGame                 
+0000d58e  InitLEDState            
+0000d596  __TI_ISR_TRAP           
+0000d59c  __TI_decompress_rle24   
+0000d5a2  _system_pre_init        
+0000d5a6  C$$EXIT                 
+0000d5a6  abort                   
+0000d5aa  table                   
+0000d5ca  testPattern             
+0000d5de  userInitialPattern      
+0000d5fc  __TI_Handler_Table_Base 
+0000d602  __TI_Handler_Table_Limit
+0000d606  __TI_CINIT_Base         
+0000d60e  __TI_CINIT_Limit        
 0000ffe0  __TI_int00              
 0000ffe4  __TI_int02              
 0000ffe6  __TI_int03              

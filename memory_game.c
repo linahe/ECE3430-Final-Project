@@ -27,7 +27,7 @@ void update() {
 		break;
 		case CheckInput:
 			GameObj.pass = checkInput();
-			if (GameObj.pass && GameObj.inputIndex == PATTERN_LENGTH) { //MAKE SURE TO INCREMENT INDEX
+			if (GameObj.pass && GameObj.inputIndex == (PATTERN_LENGTH-1)) { //MAKE SURE TO INCREMENT INDEX
 				P1OUT |= GLED;
 				GameObj.currentGameState = WinGame;
 			} else if(GameObj.pass && (GameObj.inputIndex == GameObj.patternIndex)) {
@@ -108,7 +108,7 @@ Direction receiveUserInput()
 				inputTimestamp = g1mSTimer;
 				currentDirection = LEDDir;
 			}
-			else if (currentDirection != LEDDir && g1mSTimer - inputTimestamp < TIMER_THRESHOLD)
+			else if (currentDirection != LEDDir && g1mSTimer - inputTimestamp < TIMER_THRESHOLD) //resetting if direction switched before time threshold
 			{
 				inputTimestamp = g1mSTimer;
 				currentDirection = LEDDir;
@@ -122,7 +122,12 @@ Direction receiveUserInput()
 		}
 		else
 		{
-			if (LEDDir == Flat && currentDirection != Flat)
+			if(LEDDir != Flat ) //put in new direction
+			{
+				inputTimestamp = g1mSTimer;
+				currentDirection = LEDDir;
+
+			} else if (LEDDir == Flat && currentDirection != Flat)
 			{
 				inputTimestamp = g1mSTimer;
 				currentDirection = Flat;
